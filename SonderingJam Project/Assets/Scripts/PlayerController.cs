@@ -8,6 +8,7 @@ enum PlayerDirection { Left, Right, Up , Down, UpLeft, UpRight, DownLeft, DownRi
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager gameManager;
 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
+        gameManager.playerController = this;
         
     }
 
@@ -100,7 +103,32 @@ public class PlayerController : MonoBehaviour
                 //if we end up needing enums
             }
         }
-
-
     }
+
+    public void SwitchActionMapPlayer() { SwitchActionMap("Player"); }
+    public void SwitchActionMapMinigame() { SwitchActionMap("Minigame"); }
+    public void SwitchActionMapUI() { SwitchActionMap("UI"); }
+    public void SwitchActionMap(string mapName)
+    {
+        playerInput.currentActionMap.Disable();
+        playerInput.SwitchCurrentActionMap(mapName);
+
+        switch (mapName)
+        {
+            case "UI":
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                break;
+            case "Minigame":
+                Debug.Log("set action map to minigame");
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                break;
+            default:
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                break;
+        }
+    }
+
 }

@@ -8,6 +8,7 @@ public class Task : MonoBehaviour, IInteractable
 
     private GameManager gameManager;
 
+    [SerializeField] private Minigame minigame;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,13 @@ public class Task : MonoBehaviour, IInteractable
 
     public void Interact(InteractManager playerInteractManager, PlayerController playerController)
     {
-        if(!Completed) { CompleteTask(); }
+        minigame.StartMinigame(this);
     }
 
-    protected void CompleteTask()
+    public void CompleteTask()
     {
         Debug.Log("task completed");
-        gameManager.DecreaseStress(20);
+        gameManager.DecreaseStress();
         Completed = true;
 
     }

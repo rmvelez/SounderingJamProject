@@ -155,9 +155,10 @@ MonoBehaviour:
   stressMeter: 0
   numGhosts: 0
   stressMeterScale: 1
-  taskCompleteDestressAmount: 30
   ghostModifier: 1
+  taskCompleteDestressAmount: 30
   stressMeterMax: 100
+  playerController: {fileID: 0}
 --- !u!4 &244331482
 Transform:
   m_ObjectHideFlags: 0
@@ -371,6 +372,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b2b7977f-da48-4134-9d20-21b6ba6d4d0d
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1110086096}
+        m_TargetAssemblyTypeName: ToiletMinigameController, Assembly-CSharp
+        m_MethodName: UseEnergy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 95c0dd2b-dd93-4dd6-9946-553f7d43f19c
+    m_ActionName: Minigame/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -634,6 +651,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 798808808}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110086096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+  m_PrefabInstance: {fileID: 1620048893117824586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c5acf3ba513bc43a05ed57683cf55c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1462598807
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Completed: 0
+  minigame: {fileID: 1110086096}
 --- !u!4 &1462598810
 Transform:
   m_ObjectHideFlags: 0
@@ -778,6 +807,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1620048893117824586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5539815315327301486, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_Name
+      value: ToiletMinigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -786,3 +872,4 @@ SceneRoots:
   - {fileID: 798808808}
   - {fileID: 1462598810}
   - {fileID: 244331482}
+  - {fileID: 1620048893117824586}

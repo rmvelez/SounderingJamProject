@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float stressMeterMax;
 
+
+    public PlayerController playerController;
+
     private void Awake()
     {
         //SINGLETON PATTERN - ensures that there only ever exists a single gamemanager
@@ -74,13 +77,16 @@ public class GameManager : MonoBehaviour
         //Debug.Log("current stress" +  stressMeter);
     }
 
+
+    public void DecreaseStress() { DecreaseStress(taskCompleteDestressAmount); }
     public void DecreaseStress(float amount)
     {
         stressMeter = Mathf.Max(stressMeter - amount, 0);
     }
+
     public void IncreaseSress(float amount)
     {
-        Debug.Log("increasing stress by: "+  amount / Time.deltaTime);
+        //Debug.Log("increasing stress by: "+  amount / Time.deltaTime);
         stressMeter = Mathf.Min(stressMeter + amount, stressMeterMax);
     }
 }
