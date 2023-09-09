@@ -70,6 +70,24 @@ public class PlayerController : MonoBehaviour
         if (playerInput != null)
         {
             rigidBody.velocity = direction * playerSpeed;
+
+
+        }
+
+        if(!Mathf.Approximately(direction.x, 0) || !Mathf.Approximately(direction.y, 0))//if we're inputting movement
+        {
+            Vector3 targetPosition = new Vector3(this.transform.position.x + direction.y, this.transform.position.y - direction.x, 0);
+            Vector3 dir = targetPosition - this.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            if (direction.x <0)//if we're moving left
+            {
+                //flip sprite left
+            } else if (direction.x > 0) //if we're moving right
+            {
+                //flip sprite right
+            }
         }
 
 
@@ -83,10 +101,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Vector3 targetPosition = new Vector3( this.transform.position.x + direction.y , this.transform.position.y - direction.x, 0) ;
-        Vector3 dir = targetPosition - this.transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
     }
 }
