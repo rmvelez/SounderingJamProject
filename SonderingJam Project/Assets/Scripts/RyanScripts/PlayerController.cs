@@ -11,12 +11,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] public Collider2D interractionCollider;
+    [SerializeField] public Collider2D hitboxCollider;
+    [Tooltip("the interact manager for the player")]
+    [SerializeField] public InteractManager interactManager;
 
     [Header("movement")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float playerSpeed;
     [SerializeField] private PlayerDirection playerDirection;
     [SerializeField] private Vector2 moveInput;
+
+
 
     private void Awake()
     {
@@ -51,14 +57,20 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
+    public void InteractActionPerformed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            interactManager.Interact();
+        }
+    }
+
     private void Move(Vector2 direction)
     {
         if (playerInput != null)
         {
             rigidBody.velocity = direction * playerSpeed;
         }
-
-        Debug.Log(direction);
 
 
         //this is for if we end up needing enums (i.e) we're doing isometric
