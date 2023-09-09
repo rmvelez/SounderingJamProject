@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stressMeter: 0
   numGhosts: 0
-  stressMeterScale: 1
-  taskCompleteDestressAmount: 30
+  stressMeterScale: 0.5
   ghostModifier: 1
-  stressMeterMax: 100
+  taskCompleteDestressAmount: 30
+  stressMeterMax: 0
 --- !u!4 &244331482
 Transform:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.43, y: 0.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -502,7 +502,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.43, y: 0.76}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.43, y: 0.76}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -520,7 +520,7 @@ Animator:
   m_GameObject: {fileID: 798808804}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec7f5b48ac057be4dacd1bf6bf19f5ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
