@@ -439,10 +439,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 5539815315327301486}
-  toiletSprite: {fileID: 0}
-  plungerSprite: {fileID: 0}
-  energyBarSprite: {fileID: 0}
-  progressBarSprite: {fileID: 0}
+  toiletSprite: {fileID: 5451363728957737522}
+  plungerSprite: {fileID: 2585158614902884041}
+  energyBarSprite: {fileID: 6443320338021577788}
+  progressBarSprite: {fileID: 4922457495410023967}
   EnergyToProgressRatio: 0.5
   progressMax: 100
   progressStep: 1

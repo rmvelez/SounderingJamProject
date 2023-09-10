@@ -12,7 +12,7 @@ public class Minigame : MonoBehaviour
     [SerializeField] protected GameObject self;
     
     // Start is called before the first frame update
-    void Start()
+    virtual protected void Start()
     {
         self = gameObject;
 

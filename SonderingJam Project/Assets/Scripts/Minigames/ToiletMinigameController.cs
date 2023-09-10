@@ -9,11 +9,13 @@ public class ToiletMinigameController : Minigame
 
 
     [Header("objects")]
-    [SerializeField] private Sprite toiletSprite;
-    [SerializeField] private Sprite plungerSprite;
-    [SerializeField] private Sprite energyBarSprite;
-    [SerializeField] private Sprite progressBarSprite;
+    [SerializeField] private SpriteRenderer energyBarSprite;
+    [SerializeField] private SpriteRenderer progressBarSprite;
+    [SerializeField] private SpriteRenderer toiletSprite;
+    [SerializeField] private SpriteRenderer plungerSprite;
 
+    private Vector3 energyBarStartPosition = new Vector3(0, -.5f,0);
+    private Vector3 progressBarStartPosition = new Vector3(0, -.5f,0);
 
     [Header("progress and energy bar variables")]
 
@@ -22,15 +24,15 @@ public class ToiletMinigameController : Minigame
 
     [SerializeField] private float progressMax = 100;
     [Tooltip("how much the progress depreceates every second")]
-    [SerializeField] private float progressStep = 1;
+    [SerializeField] private float progressStep = 2;
     [Tooltip("the current amount of progress the player has")]
-    [SerializeField] private float progressAmount = 50;
+    [SerializeField] private float progressValue = 50;
     [Tooltip("the default value of the progress bar")]
     [SerializeField] private float progressStart = 50;
 
     [SerializeField] float energyMax = 100;
     [Tooltip("the current amount of energy the player has")]
-    [SerializeField] private float energyAmount;
+    [SerializeField] private float energyValue;
 
     [Tooltip("b in the formula (bt)^e to set the rate at which the player increases energy")]
     [SerializeField] private float energyIncreaseBase = 1; //b in formula
@@ -42,18 +44,42 @@ public class ToiletMinigameController : Minigame
 
     //[SerializeField] float 
 
+    protected override void Start()
+    {
+        base.Start();
+
+        progressValue = progressStart;
+        energyBarSprite.transform.localPosition = energyBarStartPosition;
+    }
+
+    private void Update()
+    {
+        float energyPercent = (energyValue / energyMax);
+        float energyBarHeight = energyBarSprite.transform.localScale.y * energyPercent;
+        energyBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ energyBarStartPosition.y + (energyPercent / 2), 0);
+        energyBarSprite.transform.localScale = new Vector3(1, energyPercent, 1);
+        
+        float progressPercent = (progressValue / progressMax);
+        float progressBarHeight = progressBarSprite.transform.localScale.y * progressPercent;
+        progressBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ progressBarStartPosition.y + (progressPercent / 2), 0);
+        progressBarSprite.transform.localScale = new Vector3(1, progressPercent, 1);
+
+
+
+        //.localScale.y -= energyBarHeight;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if(minigameActive)
         {
-            energyAmount = Mathf.Pow(energyIncreaseBase*energyIncreaseTimeSinceLastUse, energyIncreaseExponent); //base = 1, xp = 2, 
-            energyAmount = Mathf.Clamp(energyAmount, 0, 100);
+            energyValue = Mathf.Pow(energyIncreaseBase*energyIncreaseTimeSinceLastUse, energyIncreaseExponent); //base = 1, xp = 2, 
+            energyValue = Mathf.Clamp(energyValue, 0, 100);
 
 
-            progressAmount += progressStep *Time.deltaTime;
-            if (progressAmount >= progressMax)
+            progressValue += progressStep *Time.deltaTime;
+            if (progressValue >= progressMax)
             {
                 Lose();
             }
@@ -64,17 +90,19 @@ public class ToiletMinigameController : Minigame
         }
     }
 
+
+
     public void UseEnergy(InputAction.CallbackContext context)
     {    
         if (context.performed)
         {
             Debug.Log("use energy called");
-            progressAmount -= energyAmount * EnergyToProgressRatio;
+            progressValue -= energyValue * EnergyToProgressRatio;
 
-            energyAmount = 0;
+            energyValue = 0;
             energyIncreaseTimeSinceLastUse = 0;
 
-            if(progressAmount<0)
+            if(progressValue<0)
             {
                 Win();
             }
@@ -90,8 +118,8 @@ public class ToiletMinigameController : Minigame
 
     override protected void ResetValues()
     {
-        energyAmount = 0;
-        progressAmount = progressStart;
+        energyValue = 0;
+        progressValue = progressStart;
         energyIncreaseTimeSinceLastUse = 0;
     }
 
