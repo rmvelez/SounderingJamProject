@@ -52,12 +52,12 @@ public class ToiletMinigameController : Minigame
             energyAmount = Mathf.Clamp(energyAmount, 0, 100);
 
 
-            progressAmount += progressStep;
+            progressAmount += progressStep *Time.deltaTime;
             if (progressAmount >= progressMax)
             {
                 Lose();
             }
-            progressAmount = Mathf.Clamp(energyAmount, 0, 100);
+            //progressAmount = Mathf.Clamp(progressAmount, 0, 100);
 
             energyIncreaseTimeSinceLastUse += Time.deltaTime;
 
@@ -82,18 +82,16 @@ public class ToiletMinigameController : Minigame
         }
     }
 
-    protected new void StartMinigame(Task task)
+    override public void StartMinigame(Task task)
     {
         base.StartMinigame(task);
         energyIncreaseTimeSinceLastUse = 0;
     }
 
-    protected new void ResetValues()
+    override protected void ResetValues()
     {
         energyAmount = 0;
         progressAmount = progressStart;
-
-        energyAmount = 0;
         energyIncreaseTimeSinceLastUse = 0;
     }
 

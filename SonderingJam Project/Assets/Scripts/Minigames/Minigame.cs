@@ -29,7 +29,7 @@ public class Minigame : MonoBehaviour
         
     }
 
-    public void Win()
+    virtual protected void Win()
     {
         gameManager.playerController.SwitchActionMapPlayer();
         parentTask.CompleteTask();
@@ -37,7 +37,7 @@ public class Minigame : MonoBehaviour
         ResetValues();
     }
 
-    public void StartMinigame(Task task)
+    virtual public void StartMinigame(Task task)
     {
         self.SetActive(true);
         gameManager.playerController.SwitchActionMapMinigame();
@@ -46,7 +46,7 @@ public class Minigame : MonoBehaviour
         minigameActive = true;
     }
 
-    protected void Lose()
+    virtual protected void Lose()
     {
         Debug.Log("minigame lost");
         gameManager.playerController.SwitchActionMapPlayer();
@@ -56,8 +56,8 @@ public class Minigame : MonoBehaviour
     }
 
     [Tooltip("does NOT reset completed")]
-    protected void ResetValues()
+    virtual protected void ResetValues()
     {
-        throw new System.NotImplementedException("if you're calling this on a child then you need to implement the function on the child");
+
     }
 }
