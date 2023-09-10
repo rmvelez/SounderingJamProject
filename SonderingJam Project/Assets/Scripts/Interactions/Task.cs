@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Task : MonoBehaviour, IInteractable
 {
-    public bool Completed;
+    public bool Completed { get; private set; }
 
     private GameManager gameManager;
 
@@ -16,11 +16,6 @@ public class Task : MonoBehaviour, IInteractable
         gameManager = GameManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void Interact(InteractManager playerInteractManager, PlayerController playerController)
@@ -34,5 +29,11 @@ public class Task : MonoBehaviour, IInteractable
         gameManager.DecreaseStress();
         Completed = true;
 
+    }
+
+    public void unCompleteTask()
+    {
+        Completed = false;
+        minigame.ResetValues();
     }
 }

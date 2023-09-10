@@ -5,8 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+<<<<<<< HEAD
   - Sponge
+=======
   - Ghost
+>>>>>>> Ghosts
   layers:
   - Default
   - TransparentFX
