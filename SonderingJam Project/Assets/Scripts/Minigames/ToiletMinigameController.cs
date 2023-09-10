@@ -81,8 +81,8 @@ public class ToiletMinigameController : Minigame
             energyValue = Mathf.Clamp(energyValue, 0, 100);
 
 
-            progressValue += progressStep *Time.deltaTime;
-            if (progressValue >= progressMax)
+            progressValue -= progressStep *Time.deltaTime;
+            if (progressValue <= 0)
             {
                 Lose();
             }
@@ -100,12 +100,12 @@ public class ToiletMinigameController : Minigame
         if (context.performed)
         {
             Debug.Log("use energy called");
-            progressValue -= energyValue * EnergyToProgressRatio;
+            progressValue += energyValue * EnergyToProgressRatio;
 
             energyValue = 0;
             energyIncreaseTimeSinceLastUse = 0;
 
-            if(progressValue<0)
+            if(progressValue>=progressMax)
             {
                 Win();
             }
