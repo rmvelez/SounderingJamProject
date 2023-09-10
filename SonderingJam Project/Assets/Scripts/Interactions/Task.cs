@@ -9,6 +9,7 @@ public class Task : MonoBehaviour, IInteractable
     private GameManager gameManager;
 
     [SerializeField] private Minigame minigame;
+    [SerializeField] public Ghost ghost;
 
     // Start is called before the first frame update
     void Start()

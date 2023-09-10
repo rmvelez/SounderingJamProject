@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected float numGhosts = 0;
 
+    [SerializeField] private List<Task> Tasks = new List<Task>();
+
     [Header("balance variables")]
     [Tooltip("how much stress you gain each second when no ghosts are present")]
     [SerializeField] private float stressMeterScale = .5f;
@@ -49,10 +51,15 @@ public class GameManager : MonoBehaviour
     public void SpawnGhost()
     {
         numGhosts++;
+        int rand = Random.Range(0, Tasks.Count);
+        Ghost ghost = Tasks[rand].ghost;
+        Tasks.RemoveAt(rand);
+        ghost.Spawn();
     }
 
-    public void DespawnGhost()
+    public void DespawnGhost(Task task)
     {
+        Tasks.Add(task);
         numGhosts--;
     }
 

@@ -34,6 +34,7 @@ public class Ghost : MonoBehaviour
         startingPos = transform.position;
 
         task.unCompleteTask();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -70,9 +71,10 @@ public class Ghost : MonoBehaviour
 
     public void Kill()
     {
-                    Debug.Log("ghost is kill");
+        Debug.Log("ghost is kill");
         gameObject.SetActive(false);
         transform.position = startingPos;
+        GameManager.Instance.DespawnGhost(task);
 
     }
 
