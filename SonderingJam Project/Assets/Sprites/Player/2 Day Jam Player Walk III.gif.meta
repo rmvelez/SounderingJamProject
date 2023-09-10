@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 2 Day Jam Player Walk III_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 41
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176db0ec7de41b242a43d13fc1f85afe
+      internalID: -1554379940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2 Day Jam Player Walk III_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1
+        width: 41
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ba70cf38ff6b246bc69d10fd63c80d
+      internalID: -665166772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2 Day Jam Player Walk III_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 41
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01ab9d0077e5bd47b0f22650ff9eb7d
+      internalID: 775400725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2 Day Jam Player Walk III_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1
+        width: 41
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011ac94377f0f444f93349de65689a0b
+      internalID: 1942528066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      2 Day Jam Player Walk III_0: -1554379940
+      2 Day Jam Player Walk III_1: -665166772
+      2 Day Jam Player Walk III_2: 775400725
+      2 Day Jam Player Walk III_3: 1942528066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

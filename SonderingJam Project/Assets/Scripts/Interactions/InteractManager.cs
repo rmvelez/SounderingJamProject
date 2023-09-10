@@ -15,6 +15,37 @@ public class InteractManager : MonoBehaviour
     [Tooltip("the player controller on the player (drag it here)")]
     [SerializeField] private PlayerController playerController;
 
+    [SerializeField] private SpriteRenderer broom;
+    [SerializeField] private bool attacking = false ;
+    public bool getAttacking() { return attacking; }
+    [SerializeField] private float attackDuration = 1;
+    float timeSinceAttackStarted = 0;
+
+    private void Start()
+    {
+        broom.enabled = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (attacking)
+        {
+            broom.enabled = true;
+            if (timeSinceAttackStarted < attackDuration)
+            {
+                timeSinceAttackStarted += Time.deltaTime;
+
+            } else
+            {
+                attacking = false;
+            }
+        } else
+        {
+            broom.enabled = false;
+        }
+    }
+
+
     private void TrackObject(GameObject objectToTrack)
     {
         //add the object to our list of tracked objects
@@ -55,6 +86,23 @@ public class InteractManager : MonoBehaviour
 
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Ghost"))
+        {
+            if (attacking)
+            {
+                Ghost ghost = other.gameObject.GetComponent<Ghost>();
+                ghost.Kill();
+                timeSinceAttackStarted = attackDuration;
+            }
+            //then track it
+            //TrackObject(other.gameObject);
+
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         // If the object exiting the trigger is an interactable object
@@ -80,6 +128,12 @@ public class InteractManager : MonoBehaviour
             //interact only with the first one
             interactableObjects[0].GetComponent<IInteractable>().Interact(this, playerController);
 
+        } else//if we're not interracting, then we're attacking.
+        {
+            
+            attacking = true;
+            timeSinceAttackStarted = 0;
+            
         }
 
 

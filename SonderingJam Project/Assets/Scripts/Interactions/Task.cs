@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Task : MonoBehaviour, IInteractable
 {
-    public bool Completed;
+    public bool Completed { get; private set; }
 
     private GameManager gameManager;
 
     [SerializeField] private Minigame minigame;
+    [SerializeField] public Ghost ghost;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
+        gameManager.Tasks.Add(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void Interact(InteractManager playerInteractManager, PlayerController playerController)
@@ -34,5 +31,11 @@ public class Task : MonoBehaviour, IInteractable
         gameManager.DecreaseStress();
         Completed = true;
 
+    }
+
+    public void unCompleteTask()
+    {
+        Completed = false;
+        minigame.ResetValues();
     }
 }

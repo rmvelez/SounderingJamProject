@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected float numGhosts = 0;
 
+    public List<Task> Tasks = new List<Task>();
+
     [Header("balance variables")]
     [Tooltip("how much stress you gain each second when no ghosts are present")]
     [SerializeField] private float stressMeterScale = .5f;
@@ -22,6 +26,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float stressMeterMax;
 
+
+    [SerializeField] private float ghostSpawnTime = 10;
+    [SerializeField] private float ghostSpawnTimeVariance;
+    [SerializeField] private float timeSinceLastSpawn;
 
     public PlayerController playerController;
 
@@ -49,10 +57,19 @@ public class GameManager : MonoBehaviour
     public void SpawnGhost()
     {
         numGhosts++;
+        if(Tasks.Count > 0)
+        {
+
+            int rand = Random.Range(0, Tasks.Count-1);
+            Ghost ghost = Tasks[rand].ghost;
+            ghost.Spawn();
+            Tasks.RemoveAt(rand);
+        }
     }
 
-    public void DespawnGhost()
+    public void DespawnGhost(Task task)
     {
+        Tasks.Add(task);
         numGhosts--;
     }
 
@@ -75,6 +92,15 @@ public class GameManager : MonoBehaviour
         //consider adding another variable to multiply by numghosts (numghosts * newMod) ^ghostModifier
         IncreaseSress((float)Time.deltaTime * ( (float)stressMeterScale + ((float)Mathf.Pow((float)numGhosts, (float)ghostModifier))));
         //Debug.Log("current stress" +  stressMeter);
+
+        timeSinceLastSpawn += Time.deltaTime;
+
+        if(timeSinceLastSpawn >= ghostSpawnTime)
+        {
+            Debug.Log("game man is saying to spawna  ghost");
+            SpawnGhost();
+            timeSinceLastSpawn = 0;
+        } 
     }
 
 

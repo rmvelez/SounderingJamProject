@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class ToiletMinigameController : Minigame
 {
-
+    public AudioClip toiletPlunge;
+    private AudioSource toiletSound;
 
     [Header("objects")]
     [SerializeField] private SpriteRenderer energyBarSprite;
@@ -51,6 +52,7 @@ public class ToiletMinigameController : Minigame
 
         progressValue = Random.Range(progressStart.x, progressStart.y);
         energyBarSprite.transform.localPosition = energyBarStartPosition;
+        toiletSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -81,8 +83,8 @@ public class ToiletMinigameController : Minigame
             energyValue = Mathf.Clamp(energyValue, 0, 100);
 
 
-            progressValue += progressStep *Time.deltaTime;
-            if (progressValue >= progressMax)
+            progressValue -= progressStep *Time.deltaTime;
+            if (progressValue <= 0)
             {
                 Lose();
             }
@@ -100,12 +102,13 @@ public class ToiletMinigameController : Minigame
         if (context.performed)
         {
             Debug.Log("use energy called");
-            progressValue -= energyValue * EnergyToProgressRatio;
+            progressValue += energyValue * EnergyToProgressRatio;
 
             energyValue = 0;
             energyIncreaseTimeSinceLastUse = 0;
+            toiletSound.PlayOneShot(toiletPlunge, 1f);
 
-            if(progressValue<0)
+            if(progressValue>=progressMax)
             {
                 Win();
             }
@@ -119,7 +122,7 @@ public class ToiletMinigameController : Minigame
         energyIncreaseTimeSinceLastUse = 0;
     }
 
-    override protected void ResetValues()
+    override public void ResetValues()
     {
         energyValue = 0;
         progressValue = Random.Range(progressStart.x, progressStart.y);

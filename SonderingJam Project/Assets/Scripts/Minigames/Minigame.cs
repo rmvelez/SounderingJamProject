@@ -23,11 +23,6 @@ public class Minigame : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     virtual protected void Win()
     {
@@ -56,7 +51,7 @@ public class Minigame : MonoBehaviour
     }
 
     [Tooltip("does NOT reset completed")]
-    virtual protected void ResetValues()
+    virtual public void ResetValues()
     {
 
     }
