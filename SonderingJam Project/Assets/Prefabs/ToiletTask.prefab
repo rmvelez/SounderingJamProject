@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 826681988929217898}
   - component: {fileID: 2768842270406698577}
   m_Layer: 3
-  m_Name: Task
+  m_Name: ToiletTask
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1086739951224804950}
+  - {fileID: 48203082071998898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6560936136519152847
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad76bef7e0cce2844a93170a4ba16b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 0}
+  minigame: {fileID: 2030785381824732651}
   ghost: {fileID: 6830301944196621382}
 --- !u!212 &826681988929217898
 SpriteRenderer:
@@ -221,5 +222,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f5da06be5140d94a91f50f1d165b4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6723610999213169548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2280766665554365253}
+    m_Modifications:
+    - target: {fileID: 5539815315327301486, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_Name
+      value: ToiletMinigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+--- !u!4 &48203082071998898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+  m_PrefabInstance: {fileID: 6723610999213169548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2030785381824732651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
+  m_PrefabInstance: {fileID: 6723610999213169548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c5acf3ba513bc43a05ed57683cf55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -55,13 +55,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         gameManager = GameManager.Instance;
         gameManager.playerController = this;
 
-        InteractBox = interactManager.gameObject;
     }
+
+    private void Start()
+    {
+        InteractBox = interactManager.gameObject;
+        
+    }
+    
 
     // Update is called once per frame
     void FixedUpdate()

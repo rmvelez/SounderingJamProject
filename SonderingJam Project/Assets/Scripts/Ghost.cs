@@ -28,6 +28,7 @@ public class Ghost : MonoBehaviour
     public AudioClip ghosthurt;
     private AudioSource ghostSound;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +49,14 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(target != null)
+        {
         vectorToPlayer = this.gameObject.transform.position - target.position;
+
+        } else
+        {
+            Debug.Log("uhuh");
+        }
         distanceToPlayer = vectorToPlayer.magnitude;
 
         if(distanceToPlayer < chaseDistance) { 
