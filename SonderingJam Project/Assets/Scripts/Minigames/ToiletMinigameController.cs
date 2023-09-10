@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class ToiletMinigameController : Minigame
 {
-
+    public AudioClip toiletPlunge;
+    private AudioSource toiletSound;
 
     [Header("objects")]
     [SerializeField] private SpriteRenderer energyBarSprite;
@@ -51,6 +52,7 @@ public class ToiletMinigameController : Minigame
 
         progressValue = Random.Range(progressStart.x, progressStart.y);
         energyBarSprite.transform.localPosition = energyBarStartPosition;
+        toiletSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -104,6 +106,7 @@ public class ToiletMinigameController : Minigame
 
             energyValue = 0;
             energyIncreaseTimeSinceLastUse = 0;
+            toiletSound.PlayOneShot(toiletPlunge, 1f);
 
             if(progressValue>=progressMax)
             {

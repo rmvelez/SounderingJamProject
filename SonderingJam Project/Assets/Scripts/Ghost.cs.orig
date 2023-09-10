@@ -39,10 +39,13 @@ public class Ghost : MonoBehaviour
         startingPos = transform.position;
 
         task.unCompleteTask();
+<<<<<<< HEAD
         gameObject.SetActive(false);
-        
+=======
+
         ghostSound = GetComponent<AudioSource>();
         ghostSound.PlayOneShot(ghostAppear, 1f);
+>>>>>>> AudioBranch
     }
 
     // Update is called once per frame
@@ -80,7 +83,10 @@ public class Ghost : MonoBehaviour
 
     public void Kill()
     {
+<<<<<<< HEAD
+=======
         ghostSound.PlayOneShot(ghosthurt, 1f);
+>>>>>>> AudioBranch
         Debug.Log("ghost is kill");
         gameObject.SetActive(false);
         transform.position = startingPos;
