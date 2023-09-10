@@ -174,11 +174,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &383984956 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6443320338021577788, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-  m_PrefabInstance: {fileID: 1620048893117824586}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,57 +815,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 459763593379729304, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 459763593379729304, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 898688149316004004, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579956382643075442, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579956382643075442, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: progressStep
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: toiletSprite
-      value: 
-      objectReference: {fileID: 383984956}
-    - target: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: progressAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: energyIncreaseBase
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711288711759431271, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: energyIncreaseExponent
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922457495410023967, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5539815315327301486, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
       propertyPath: m_Name
       value: ToiletMinigame
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443320338021577788, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -911,22 +858,6 @@ PrefabInstance:
     - target: {fileID: 6765621490063350334, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8743645994608747345, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8743645994608747345, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8743645994608747345, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8743645994608747345, guid: b0c3e75d5659c9146b29c69559ca98d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

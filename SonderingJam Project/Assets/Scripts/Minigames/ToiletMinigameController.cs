@@ -16,6 +16,7 @@ public class ToiletMinigameController : Minigame
 
     private Vector3 energyBarStartPosition = new Vector3(0, -.5f,0);
     private Vector3 progressBarStartPosition = new Vector3(0, -.5f,0);
+    private float plungerTopHeight = .2f; 
 
     [Header("progress and energy bar variables")]
 
@@ -27,8 +28,8 @@ public class ToiletMinigameController : Minigame
     [SerializeField] private float progressStep = 2;
     [Tooltip("the current amount of progress the player has")]
     [SerializeField] private float progressValue = 50;
-    [Tooltip("the default value of the progress bar")]
-    [SerializeField] private float progressStart = 50;
+    [Tooltip("progress bar starts at a random value in this range")]
+    [SerializeField] private Vector2 progressStart = new Vector2(25, 75); //for added polish randomize this
 
     [SerializeField] float energyMax = 100;
     [Tooltip("the current amount of energy the player has")]
@@ -48,7 +49,7 @@ public class ToiletMinigameController : Minigame
     {
         base.Start();
 
-        progressValue = progressStart;
+        progressValue = Random.Range(progressStart.x, progressStart.y);
         energyBarSprite.transform.localPosition = energyBarStartPosition;
     }
 
@@ -59,11 +60,13 @@ public class ToiletMinigameController : Minigame
         energyBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ energyBarStartPosition.y + (energyPercent / 2), 0);
         energyBarSprite.transform.localScale = new Vector3(1, energyPercent, 1);
         
+        plungerSprite.transform.localPosition = new Vector3(0, energyPercent * plungerTopHeight, 0);
+        
+
         float progressPercent = (progressValue / progressMax);
         float progressBarHeight = progressBarSprite.transform.localScale.y * progressPercent;
         progressBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ progressBarStartPosition.y + (progressPercent / 2), 0);
         progressBarSprite.transform.localScale = new Vector3(1, progressPercent, 1);
-
 
 
         //.localScale.y -= energyBarHeight;
@@ -119,7 +122,7 @@ public class ToiletMinigameController : Minigame
     override protected void ResetValues()
     {
         energyValue = 0;
-        progressValue = progressStart;
+        progressValue = Random.Range(progressStart.x, progressStart.y);
         energyIncreaseTimeSinceLastUse = 0;
     }
 
