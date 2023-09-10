@@ -59,7 +59,7 @@ public class KitchenMinigame : Minigame
         base.StartMinigame(task);
     }
 
-    override protected void ResetValues()
+    override public void ResetValues()
     {
         foreach(GameObject stain in foodStains)
         {

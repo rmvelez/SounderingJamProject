@@ -23,6 +23,11 @@ public class Ghost : MonoBehaviour
 
     private Vector3 startingPos;
 
+    public AudioClip ghostAppear;
+    public AudioClip ghostAttack;
+    public AudioClip ghosthurt;
+    private AudioSource ghostSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +39,9 @@ public class Ghost : MonoBehaviour
         startingPos = transform.position;
 
         task.unCompleteTask();
+
+        ghostSound = GetComponent<AudioSource>();
+        ghostSound.PlayOneShot(ghostAppear, 1f);
     }
 
     // Update is called once per frame
@@ -58,6 +66,7 @@ public class Ghost : MonoBehaviour
 
                 if (interactManager.getAttacking())
                 {
+                    ghostSound.PlayOneShot(ghostAttack, 1f);
                     Debug.Log("ghost is kill");
                 }
             } else
@@ -70,7 +79,8 @@ public class Ghost : MonoBehaviour
 
     public void Kill()
     {
-                    Debug.Log("ghost is kill");
+        ghostSound.PlayOneShot(ghosthurt, 1f);
+        Debug.Log("ghost is kill");
         gameObject.SetActive(false);
         transform.position = startingPos;
 
