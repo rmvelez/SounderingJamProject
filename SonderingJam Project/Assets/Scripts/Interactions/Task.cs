@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Task : MonoBehaviour, IInteractable
 {
-    public bool Completed;
+    public bool Completed { get; private set; }
 
     private GameManager gameManager;
 
@@ -34,5 +34,11 @@ public class Task : MonoBehaviour, IInteractable
         gameManager.DecreaseStress();
         Completed = true;
 
+    }
+
+    public void unCompleteTask()
+    {
+        Completed = false;
+        minigame.ResetValues();
     }
 }

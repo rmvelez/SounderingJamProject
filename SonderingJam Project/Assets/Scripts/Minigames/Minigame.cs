@@ -56,7 +56,7 @@ public class Minigame : MonoBehaviour
     }
 
     [Tooltip("does NOT reset completed")]
-    virtual protected void ResetValues()
+    virtual public void ResetValues()
     {
 
     }

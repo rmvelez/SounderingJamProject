@@ -119,7 +119,7 @@ public class ToiletMinigameController : Minigame
         energyIncreaseTimeSinceLastUse = 0;
     }
 
-    override protected void ResetValues()
+    override public void ResetValues()
     {
         energyValue = 0;
         progressValue = Random.Range(progressStart.x, progressStart.y);
