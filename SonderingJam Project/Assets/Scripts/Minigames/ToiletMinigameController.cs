@@ -16,7 +16,7 @@ public class ToiletMinigameController : Minigame
 
     private Vector3 energyBarStartPosition = new Vector3(0, -.5f,0);
     private Vector3 progressBarStartPosition = new Vector3(0, -.5f,0);
-    private float plungerTopHeight = .2f; 
+    private float plungerTopHeight = .4f; 
 
     [Header("progress and energy bar variables")]
 
