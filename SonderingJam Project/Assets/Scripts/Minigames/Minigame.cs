@@ -23,11 +23,6 @@ public class Minigame : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     virtual protected void Win()
     {

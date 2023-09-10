@@ -16,11 +16,6 @@ public class Task : MonoBehaviour, IInteractable
         gameManager = GameManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void Interact(InteractManager playerInteractManager, PlayerController playerController)

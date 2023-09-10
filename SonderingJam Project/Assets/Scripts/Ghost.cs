@@ -21,6 +21,7 @@ public class Ghost : MonoBehaviour
 
     [SerializeField] private float chaseDistance;
 
+    private Vector3 startingPos;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class Ghost : MonoBehaviour
 
         player = gameManager.playerController.gameObject;
         target = player.transform;
+
+        startingPos = transform.position;
 
         task.unCompleteTask();
     }
@@ -42,6 +45,42 @@ public class Ghost : MonoBehaviour
         if(distanceToPlayer < chaseDistance) { 
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
         }
+    }
+
+    private void OnTriggerStay(UnityEngine.Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameObject interactBox = other.gameObject;
+            if(interactBox.GetComponent<InteractManager>() != null)
+            {
+            InteractManager interactManager = interactBox.GetComponent<InteractManager>();
+
+                if (interactManager.getAttacking())
+                {
+                    Debug.Log("ghost is kill");
+                }
+            } else
+            {
+                Debug.Log("IUM null");
+
+            }
+        }
+    }
+
+    public void Kill()
+    {
+                    Debug.Log("ghost is kill");
+        gameObject.SetActive(false);
+        transform.position = startingPos;
+
+    }
+
+    public void Spawn()
+    {
+        task.unCompleteTask();
+        gameObject.SetActive(true);
+
     }
 
 }

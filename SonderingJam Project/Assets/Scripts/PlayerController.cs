@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 enum PlayerDirection { Left, Right, Up , Down, UpLeft, UpRight, DownLeft, DownRight}
 
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] public Collider2D interractionCollider;
+    private GameObject InteractBox;
     [SerializeField] public Collider2D hitboxCollider;
     [Tooltip("the interact manager for the player")]
     [SerializeField] public InteractManager interactManager;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     //Animation Variables
     private int movementAnimationDirection;
+    private float prevAngle = 0;
+    private int prevDirection;
     //private const int WALK_LEFT_DIRECTION = 2;
     //private const int WALK_RIGHT_DIRECTION = 2;
     private const int WALK_SIDE_DIRECTION = 2;
@@ -55,7 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         gameManager.playerController = this;
-        
+
+        InteractBox = interactManager.gameObject;
     }
 
     // Update is called once per frame
@@ -76,32 +81,40 @@ public class PlayerController : MonoBehaviour
             interactManager.Interact();
         }
     }
-
     private void Move(Vector2 direction)
     {
+        
         if (playerInput != null)
         {
-        Debug.Log(" 1");
             rigidBody.velocity = direction * playerSpeed;
 
 
         }
-        Debug.Log(" 2");
+
 
         if (!Mathf.Approximately(direction.x, 0) || !Mathf.Approximately(direction.y, 0))//if we're inputting movement
         {
-            Debug.Log(" 3");
 
             Vector3 targetPosition = new Vector3(this.transform.position.x + direction.y, this.transform.position.y - direction.x, 0);
             Vector3 dir = targetPosition - this.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             //this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //InteractBox.transform.RotateAround(transform.position, Vector3.forward, angle);// Quaternion.AngleAxis(angle, Vector3.forward);
+            //InteractBox.transform.Rotate(Vector3.forward, angle, Space.Self);
+            
+            if(angle != prevAngle)
+            {
+                InteractBox.transform.RotateAround(transform.position, Vector3.forward, -prevAngle );
+                InteractBox.transform.RotateAround(transform.position, Vector3.forward, angle);
+            }
+
+
+
 
 
 
             if (direction.x < 0)//if we're moving left
             {
-                Debug.Log(" 3.1");
 
                 GetComponent<SpriteRenderer>().flipX = true;
                 movementAnimationDirection = WALK_SIDE_DIRECTION;
@@ -110,8 +123,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (direction.x > 0) //if we're moving right
             {
-                Debug.Log(" 3.2");
-
                 GetComponent<SpriteRenderer>().flipX = false;
 
                 //flip sprite right
@@ -121,17 +132,13 @@ public class PlayerController : MonoBehaviour
             
             if (direction.y > 0) //override if the player is moving up
             {
-                Debug.Log(" 3.3");
-
                 movementAnimationDirection = WALK_UP_DIRECTION;
             }
             else if (direction.y < 0) //if we're moving down
             {
-                Debug.Log(" 3.4");
-                //flip sprite down
-
                 movementAnimationDirection = WALK_DOWN_DIRECTION;
             }
+            prevAngle = angle;
 
         }
         else //mot moving
@@ -149,7 +156,6 @@ public class PlayerController : MonoBehaviour
 
                 default:
                 case (WALK_SIDE_DIRECTION):
-                    Debug.Log("ping");
                     movementAnimationDirection = IDLE_SIDE_DIRECTION;
                     break;
                 case (WALK_UP_DIRECTION):
@@ -192,8 +198,10 @@ public class PlayerController : MonoBehaviour
             }*/
 
         }
+        prevDirection = movementAnimationDirection;
+
         animator.SetInteger("Movement", movementAnimationDirection);
-        Debug.Log(movementAnimationDirection);
+
     }
 
         
@@ -214,12 +222,12 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Minigame":
                 Debug.Log("set action map to minigame");
-                UnityEngine.Cursor.visible = false;
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                //UnityEngine.Cursor.visible = false;
+                //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                 break;
             default:
-                UnityEngine.Cursor.visible = false;
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                //UnityEngine.Cursor.visible = false;
+                //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
     }
@@ -227,10 +235,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-            Debug.Log("player hit by ghost(?)");
+            //Debug.Log("player hit by ghost(?)");
         if (other.CompareTag("Ghost"))
         {
-            Debug.Log("player hit by ghost.");
+            //Debug.Log("player hit by ghost.");
+            //implement knockback? somehow?
         }
     }
 
