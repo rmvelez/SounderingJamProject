@@ -53,6 +53,12 @@ public class InteractManager : MonoBehaviour
             //then track it
             TrackObject(other.gameObject);
 
+        } else if(other.CompareTag("Ghost"))
+        {
+            Debug.Log("boo");
+            //then track it
+            //TrackObject(other.gameObject);
+
         }
     }
     private void OnTriggerExit(Collider other)

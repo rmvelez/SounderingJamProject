@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("player hit by ghost(?)");
         if (other.CompareTag("Ghost"))
         {
+            Debug.Log("player hit by ghost.");
         }
     }
 
