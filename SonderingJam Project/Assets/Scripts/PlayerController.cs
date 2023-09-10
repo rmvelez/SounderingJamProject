@@ -131,4 +131,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+            Debug.Log("player hit by ghost(?)");
+        if (other.CompareTag("Ghost"))
+        {
+        }
+    }
+
 }
