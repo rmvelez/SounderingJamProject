@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
+        Debug.Log(" 1");
         if (playerInput != null)
         {
-        Debug.Log(" 1");
             rigidBody.velocity = direction * playerSpeed;
 
 
@@ -192,12 +192,15 @@ public class PlayerController : MonoBehaviour
             }*/
 
         }
+<<<<<<< HEAD
+=======
+
         animator.SetInteger("Movement", movementAnimationDirection);
         Debug.Log(movementAnimationDirection);
+
+>>>>>>> DoriBranch
     }
 
-        
-        
     public void SwitchActionMapPlayer() { SwitchActionMap("Player"); }
     public void SwitchActionMapMinigame() { SwitchActionMap("Minigame"); }
     public void SwitchActionMapUI() { SwitchActionMap("UI"); }
