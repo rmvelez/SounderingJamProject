@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 798808808}
-  - component: {fileID: 798808807}
+  - component: {fileID: 798808812}
   - component: {fileID: 798808806}
   - component: {fileID: 798808805}
   - component: {fileID: 798808809}
@@ -313,7 +313,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &798808806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 798808807}
+      - m_Target: {fileID: 798808812}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: MoveActionPerformed
         m_Mode: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_ActionName: Player/New action[/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 798808807}
+      - m_Target: {fileID: 798808812}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: InteractActionPerformed
         m_Mode: 0
@@ -376,27 +376,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &798808807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798808804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b54beb6075cc3f4aa47bbedef93f4c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 798808805}
-  spriteRenderer: {fileID: 798808809}
-  interractionCollider: {fileID: 995387158}
-  hitboxCollider: {fileID: 798808810}
-  interactManager: {fileID: 995387157}
-  playerInput: {fileID: 798808806}
-  playerSpeed: 4
-  playerDirection: 0
-  moveInput: {x: 0, y: 0}
 --- !u!4 &798808808
 Transform:
   m_ObjectHideFlags: 0
@@ -531,6 +510,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &798808812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798808804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb6ebc43da20044aa722648b5219a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 798808805}
+  spriteRenderer: {fileID: 798808809}
+  interractionCollider: {fileID: 995387158}
+  hitboxCollider: {fileID: 798808810}
+  interactManager: {fileID: 995387157}
+  playerInput: {fileID: 798808806}
+  playerSpeed: 2
+  playerDirection: 0
+  moveInput: {x: 0, y: 0}
+  animator: {fileID: 798808811}
 --- !u!1 &995387156
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +568,7 @@ MonoBehaviour:
   OnInteractablesDoNotExist:
     m_PersistentCalls:
       m_Calls: []
-  playerController: {fileID: 798808807}
+  playerController: {fileID: 0}
 --- !u!60 &995387158
 PolygonCollider2D:
   m_ObjectHideFlags: 0
