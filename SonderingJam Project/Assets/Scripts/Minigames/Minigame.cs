@@ -36,12 +36,13 @@ public class Minigame : MonoBehaviour
     {
         self.SetActive(true);
         gameManager.playerController.SwitchActionMapMinigame();
+        gameManager.playerController.currentMinigame = this;
         Debug.Log("minigame started");
         parentTask = task; 
         minigameActive = true;
     }
 
-    virtual protected void Lose()
+    virtual public void Lose()
     {
         Debug.Log("minigame lost");
         gameManager.playerController.SwitchActionMapPlayer();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,11 +17,13 @@ public class GameManager : MonoBehaviour
 
     public List<Task> Tasks = new List<Task>();
 
+    public float Timer = 0;
+
     [Header("balance variables")]
     [Tooltip("how much stress you gain each second when no ghosts are present")]
-    [SerializeField] private float stressMeterScale = .5f;
+    [SerializeField] private float stressMeterScale = 0f;
     [Tooltip("the amount by which we scale the amount of ambient stress collection per ghost that is present - g^m in which g is the number of ghosts and m is the modifier")]
-    [SerializeField] private float ghostModifier = 1.0f;
+    [SerializeField] private float ghostModifier = 3.0f;
     [Tooltip("how much stress you lose from completing a task")]
     [SerializeField] private float taskCompleteDestressAmount = 30f;
 
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
 
             //keep ourselves between levels
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -87,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Timer += Time.deltaTime;
         //function is Time.Dt * (stressMeterScale +(numghosts^ghostModifer)
         //consider adding another variable to multiply by numghosts (numghosts * newMod) ^ghostModifier
         IncreaseSress((float)Time.deltaTime * ( (float)stressMeterScale + ((float)Mathf.Pow((float)numGhosts, (float)ghostModifier))));
@@ -101,6 +104,11 @@ public class GameManager : MonoBehaviour
             SpawnGhost();
             timeSinceLastSpawn = 0;
         } 
+
+        if(stressMeter >= stressMeterMax)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
     }
 
 

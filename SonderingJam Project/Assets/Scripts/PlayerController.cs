@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private Animator animator;
 
+    public Minigame currentMinigame;
+
     //Animation Variables
     private int movementAnimationDirection;
     private float prevAngle = 0;
@@ -64,8 +66,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         InteractBox = interactManager.gameObject;
-        
+
     }
     
 
@@ -246,9 +249,15 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("player hit by ghost(?)");
         if (other.CompareTag("Ghost"))
         {
-            //Debug.Log("player hit by ghost.");
+            Debug.Log("player hit by ghost.");
             //implement knockback? somehow?
+            gameManager.IncreaseSress(10);
         }
+    }
+
+    public void QuitMiniGame(InputAction.CallbackContext context)
+    {
+        currentMinigame.Lose();
     }
 
 }

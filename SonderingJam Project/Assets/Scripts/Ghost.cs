@@ -77,11 +77,13 @@ public class Ghost : MonoBehaviour
                     ghostSound.PlayOneShot(ghostAttack, 1f);
                     Debug.Log("ghost is kill");
                 }
+                
             } else
             {
                 Debug.Log("IUM null");
 
             }
+            
         }
     }
 
@@ -97,7 +99,11 @@ public class Ghost : MonoBehaviour
 
     public void Spawn()
     {
+        if (task.Completed)
+        {
+
         task.unCompleteTask();
+        }
         gameObject.SetActive(true);
         ghostSound.PlayOneShot(ghostAppear, 1f);
     }
