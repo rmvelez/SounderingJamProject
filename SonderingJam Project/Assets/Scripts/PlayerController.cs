@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -76,6 +77,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move(moveInput);
+
+        
     }
 
     public void MoveActionPerformed(InputAction.CallbackContext context)
