@@ -20,6 +20,6 @@ public class GetScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = gameManager.Timer.ToString();
+        score.text = GameManager.Instance.finalTimer.ToString();
     }
 }
