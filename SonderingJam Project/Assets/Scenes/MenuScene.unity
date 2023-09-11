@@ -1952,7 +1952,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Use the Arrow Keys to Move\n\nSpace Bar or e Key to Interact\n\nUse mouse
-    to move sponge \n(Kitchen Minigame Only)"
+    to move sponge \n(Kitchen Minigame Only)\n\nQ to Quit Out of Minigame"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
