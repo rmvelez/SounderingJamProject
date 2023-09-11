@@ -32,7 +32,7 @@ public class MenuControl : MonoBehaviour
     // will start the game
     public void PlayGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("GameplayScene");
     }
 
     // this function is called on the back button in either the instruction or credits screen
