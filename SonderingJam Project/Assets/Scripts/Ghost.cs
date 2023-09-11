@@ -41,9 +41,8 @@ public class Ghost : MonoBehaviour
 
         task.unCompleteTask();
         gameObject.SetActive(false);
-        
+
         ghostSound = GetComponent<AudioSource>();
-        ghostSound.PlayOneShot(ghostAppear, 1f);
     }
 
     // Update is called once per frame
@@ -100,7 +99,7 @@ public class Ghost : MonoBehaviour
     {
         task.unCompleteTask();
         gameObject.SetActive(true);
-
+        ghostSound.PlayOneShot(ghostAppear, 1f);
     }
 
 }

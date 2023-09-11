@@ -82,6 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigame: {fileID: 543835484540018313}
   ghost: {fileID: 6271636513439322170}
+  incompleteSprite: {fileID: 1582370829, guid: 38bda792d2faf9541b798976193ee0ee, type: 3}
+  completeSprite: {fileID: 1550663062, guid: 38bda792d2faf9541b798976193ee0ee, type: 3}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &4096399964662334470
 SpriteRenderer:
   m_ObjectHideFlags: 0
