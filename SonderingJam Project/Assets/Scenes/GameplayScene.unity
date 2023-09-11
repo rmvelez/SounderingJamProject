@@ -948,6 +948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 5328920714967085645, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
+      propertyPath: m_TagString
+      value: PlayerInteract
+      objectReference: {fileID: 0}
     - target: {fileID: 8540454712803794947, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 4
@@ -2159,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 493055624761745962, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.05
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 1920395682430258249, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_LocalScale.x

@@ -96,6 +96,7 @@ public class InteractManager : MonoBehaviour
                 Ghost ghost = other.gameObject.GetComponent<Ghost>();
                 ghost.Kill();
                 timeSinceAttackStarted = attackDuration;
+                GameManager.Instance.playerController.ghostInit = false;
             }
             //then track it
             //TrackObject(other.gameObject);

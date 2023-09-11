@@ -65,7 +65,7 @@ public class Ghost : MonoBehaviour
 
     private void OnTriggerStay(UnityEngine.Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerInteract"))
         {
             GameObject interactBox = other.gameObject;
             if(interactBox.GetComponent<InteractManager>() != null)

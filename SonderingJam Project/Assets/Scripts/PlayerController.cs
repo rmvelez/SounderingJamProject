@@ -246,15 +246,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool ghostInit = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
             //Debug.Log("player hit by ghost(?)");
-        if (other.CompareTag("Ghost"))
+        if ((other.CompareTag("Ghost")) && !ghostInit) 
         {
             Debug.Log("player hit by ghost.");
             //implement knockback? somehow?
-            gameManager.IncreaseSress(10);
+            gameManager.IncreaseSress(20);
+            ghostInit = true;
         }
     }
 
