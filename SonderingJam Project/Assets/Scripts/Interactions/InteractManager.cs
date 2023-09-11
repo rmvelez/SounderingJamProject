@@ -105,6 +105,7 @@ public class InteractManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("untrackign object");
         // If the object exiting the trigger is an interactable object
         if (other.CompareTag("Interactable"))
         {
@@ -125,8 +126,13 @@ public class InteractManager : MonoBehaviour
         //make sure we still have objects
         if (interactableObjects.Count > 0)
         {
+            GameObject gameObj = interactableObjects[0];
+
+            UntrackObject(gameObj);
+
+
             //interact only with the first one
-            interactableObjects[0].GetComponent<IInteractable>().Interact(this, playerController);
+            gameObj.GetComponent<IInteractable>().Interact(this, playerController);
 
         } else//if we're not interracting, then we're attacking.
         {

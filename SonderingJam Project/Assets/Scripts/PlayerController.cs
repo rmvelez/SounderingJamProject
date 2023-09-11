@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
             interactManager.Interact();
         }
     }
+
     private void Move(Vector2 direction)
     {
         
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchActionMapUI() { SwitchActionMap("UI"); }
     public void SwitchActionMap(string mapName)
     {
+        Debug.Log("switching action map");
         playerInput.currentActionMap.Disable();
         playerInput.SwitchCurrentActionMap(mapName);
 

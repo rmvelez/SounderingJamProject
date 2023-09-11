@@ -15,9 +15,9 @@ public class ToiletMinigameController : Minigame
     [SerializeField] private SpriteRenderer toiletSprite;
     [SerializeField] private SpriteRenderer plungerSprite;
 
-    private Vector3 energyBarStartPosition = new Vector3(0, -.5f,0);
+    private Vector3 energyBarStartPosition = new Vector3(.08f, -.5025f,0);
     private Vector3 progressBarStartPosition = new Vector3(0, -.5f,0);
-    private float plungerTopHeight = .4f; 
+    private float plungerTopHeight = .3f; 
 
     [Header("progress and energy bar variables")]
 
@@ -60,7 +60,7 @@ public class ToiletMinigameController : Minigame
         float energyPercent = (energyValue / energyMax);
         float energyBarHeight = energyBarSprite.transform.localScale.y * energyPercent;
         energyBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ energyBarStartPosition.y + (energyPercent / 2), 0);
-        energyBarSprite.transform.localScale = new Vector3(1, energyPercent, 1);
+        energyBarSprite.transform.localScale = new Vector3(.1f, energyPercent, 1.15f);
         
         plungerSprite.transform.localPosition = new Vector3(0, energyPercent * plungerTopHeight, 0);
         
@@ -68,7 +68,7 @@ public class ToiletMinigameController : Minigame
         float progressPercent = (progressValue / progressMax);
         float progressBarHeight = progressBarSprite.transform.localScale.y * progressPercent;
         progressBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ progressBarStartPosition.y + (progressPercent / 2), 0);
-        progressBarSprite.transform.localScale = new Vector3(1, progressPercent, 1);
+        progressBarSprite.transform.localScale = new Vector3(.1f, progressPercent, 1.15f);
 
 
         //.localScale.y -= energyBarHeight;
