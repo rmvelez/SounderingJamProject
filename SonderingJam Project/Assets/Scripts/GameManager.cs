@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 
     public List<Task> Tasks = new List<Task>();
 
-    public float Timer = 0;
+    private float Timer = 0;
+    public float finalTimer = 0;
 
     [Header("balance variables")]
     [Tooltip("how much stress you gain each second when no ghosts are present")]
@@ -88,6 +89,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private bool Lost;
+
     private void FixedUpdate()
     {
         Timer += Time.deltaTime;
@@ -103,11 +106,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("game man is saying to spawna  ghost");
             SpawnGhost();
             timeSinceLastSpawn = 0;
-        } 
+        }
 
-        if(stressMeter >= stressMeterMax)
+        if ((stressMeter >= stressMeterMax) && !Lost) 
         {
+            finalTimer = Timer;
             SceneManager.LoadScene("GameOverScene");
+            Lost = true;
         }
     }
 
