@@ -16,6 +16,8 @@ public class InteractManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private SpriteRenderer broom;
+    [SerializeField] private Animator broomAnimator;
+
     [SerializeField] private bool attacking = false ;
     public bool getAttacking() { return attacking; }
     [SerializeField] private float attackDuration = 1;
@@ -30,7 +32,8 @@ public class InteractManager : MonoBehaviour
     {
         if (attacking)
         {
-            broom.enabled = true;
+            //broom.enabled = true;
+            broomAnimator.SetTrigger("Attack");
             if (timeSinceAttackStarted < attackDuration)
             {
                 timeSinceAttackStarted += Time.deltaTime;
@@ -41,7 +44,7 @@ public class InteractManager : MonoBehaviour
             }
         } else
         {
-            broom.enabled = false;
+            //broom.enabled = false;
         }
     }
 

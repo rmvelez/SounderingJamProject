@@ -59,7 +59,7 @@ MonoBehaviour:
   playerSpeed: 3
   playerDirection: 0
   moveInput: {x: 0, y: 0}
-  animator: {fileID: 6625120062982685885}
+  playerAnimator: {fileID: 6625120062982685885}
   currentMinigame: {fileID: 0}
   ghostInit: 0
 --- !u!114 &8540454712803794947
@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 4202753276839889874}
   - component: {fileID: 9086528567891776954}
   - component: {fileID: 3938415951047536263}
+  - component: {fileID: 5720116947476999430}
   m_Layer: 3
   m_Name: InteractBox
   m_TagString: Player
@@ -344,6 +345,7 @@ MonoBehaviour:
       m_Calls: []
   playerController: {fileID: 0}
   broom: {fileID: 9086528567891776954}
+  broomAnimator: {fileID: 5720116947476999430}
   attacking: 0
   attackDuration: 2
 --- !u!60 &4202753276839889874
@@ -479,3 +481,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &5720116947476999430
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328920714967085645}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2942e0b7ef2b4c04190bac3967e1195b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

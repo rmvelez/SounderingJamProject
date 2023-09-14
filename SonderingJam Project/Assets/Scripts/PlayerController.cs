@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private PlayerDirection playerDirection;
     [SerializeField] private Vector2 moveInput;
-    [SerializeField] private Animator animator;
+
+    [Header("animation")]
+    [SerializeField] private Animator playerAnimator;
 
     public Minigame currentMinigame;
 
@@ -213,7 +215,7 @@ public class PlayerController : MonoBehaviour
         }
         prevDirection = movementAnimationDirection;
 
-        animator.SetInteger("Movement", movementAnimationDirection);
+        playerAnimator.SetInteger("Movement", movementAnimationDirection);
 
     }
 
