@@ -60,6 +60,8 @@ MonoBehaviour:
   playerDirection: 0
   moveInput: {x: 0, y: 0}
   animator: {fileID: 6625120062982685885}
+  currentMinigame: {fileID: 0}
+  ghostInit: 0
 --- !u!114 &8540454712803794947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +135,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 95c0dd2b-dd93-4dd6-9946-553f7d43f19c
     m_ActionName: Minigame/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 18f1290f-4c79-42db-b2d6-cfd3a1530265
+    m_ActionName: Minigame/Quit[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -146,7 +152,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5202942148463414993}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -295,6 +301,7 @@ GameObject:
   - component: {fileID: 1242991075628987068}
   - component: {fileID: 4202753276839889874}
   - component: {fileID: 9086528567891776954}
+  - component: {fileID: 3938415951047536263}
   m_Layer: 3
   m_Name: InteractBox
   m_TagString: Player
@@ -445,3 +452,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &3938415951047536263
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328920714967085645}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

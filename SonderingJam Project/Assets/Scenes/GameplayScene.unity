@@ -213,7 +213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d3ef075017f9ce446959866294adaed3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -445,6 +445,14 @@ PrefabInstance:
     - target: {fileID: 4201319706114751037, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600627945596341484, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600627945596341484, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 6147599171768291960, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
       propertyPath: spriteRenderer
@@ -1665,7 +1673,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9, y: 7.66}
+  m_Size: {x: 2.89, y: 7.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2229,6 +2237,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4519285289847734440, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4600627945596341484, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.54
@@ -2265,7 +2277,7 @@ GameObject:
   - component: {fileID: 1864225541}
   - component: {fileID: 1864225540}
   m_Layer: 0
-  m_Name: background music loop FINAL
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
