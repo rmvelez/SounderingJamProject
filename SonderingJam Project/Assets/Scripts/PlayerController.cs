@@ -102,8 +102,6 @@ public class PlayerController : MonoBehaviour
         if (playerInput != null)
         {
             rigidBody.velocity = direction * playerSpeed;
-
-
         }
 
 
@@ -179,13 +177,7 @@ public class PlayerController : MonoBehaviour
                 case (WALK_DOWN_DIRECTION):
                     movementAnimationDirection = IDLE_DOWN_DIRECTION;
                     break;
-
-
-
-
             }
-
-
 
             /*
                 Debug.Log(" 4.1");
@@ -248,18 +240,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool ghostInit = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
             //Debug.Log("player hit by ghost(?)");
-        if ((other.CompareTag("Ghost")) && !ghostInit) 
+        if (other.CompareTag("Ghost")) 
         {
-            Debug.Log("player hit by ghost.");
-            //implement knockback? somehow?
-            gameManager.IncreaseSress(20);
-            ghostInit = true;
+            playerHit(other.gameObject);
         }
+    }
+
+    private void playerHit(GameObject go)
+    {
+
+        Debug.Log("player hit by ghost.");
+        //implement knockback? somehow?
+        gameManager.IncreaseSress(20);
+
+        Vector2 force = new Vector2(go.transform.position.x + transform.position.x, go.transform.position.y + transform.position.y);
+        Debug.Log(force.ToString());
+
+        force.Normalize();
+        Debug.Log(force.ToString());
+
+        //figure out what I'm doing wrong here
+        rigidBody.velocity += force;
     }
 
     public void QuitMiniGame(InputAction.CallbackContext context)

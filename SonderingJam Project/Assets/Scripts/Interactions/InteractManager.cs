@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
+using System;
 
 public class InteractManager : MonoBehaviour
 {
     List<GameObject> interactableObjects = new List<GameObject>();
+    List<GameObject> trackedGhosts = new List<GameObject>();
 
     [Tooltip("Event called when we go from 0 to 1 at least 1 interractable object in range")]
     public UnityEvent OnInteractablesExist;
@@ -16,7 +18,7 @@ public class InteractManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private SpriteRenderer broom;
-    [SerializeField] private Animator broomAnimator;
+    [SerializeField] public Animator broomAnimator;
 
     [SerializeField] private bool attacking = false ;
     public bool getAttacking() { return attacking; }
@@ -32,8 +34,10 @@ public class InteractManager : MonoBehaviour
     {
         if (attacking)
         {
+            broomAnimator.SetFloat("AnimationTime", 1/attackDuration);
+
             //broom.enabled = true;
-            broomAnimator.SetTrigger("Attack");
+            //broomAnimator.SetTrigger("Attack");
             if (timeSinceAttackStarted < attackDuration)
             {
                 timeSinceAttackStarted += Time.deltaTime;
@@ -41,6 +45,8 @@ public class InteractManager : MonoBehaviour
             } else
             {
                 attacking = false;
+                broomAnimator.SetBool("attacking", false);
+                broom.enabled = false;
             }
         } else
         {
@@ -51,14 +57,23 @@ public class InteractManager : MonoBehaviour
 
     private void TrackObject(GameObject objectToTrack)
     {
-        //add the object to our list of tracked objects
-        interactableObjects.Add(objectToTrack);
+        if (objectToTrack.CompareTag("Ghost"))
+        {
+            //if it's a ghost, we want to specifically track it as one
+            trackedGhosts.Add(objectToTrack);
+        }
+        else
+        {
+            //otherwise, it's a generic tracked object - I could potentially refactor this to taks specifically but at this point there's no difference
+            interactableObjects.Add(objectToTrack);
+
+        }
 
         //interactables exist, so let everyone know
-        if (interactableObjects.Count == 1)
-        {
-            OnInteractablesExist.Invoke();
-        }
+        //if (interactableObjects.Count == 1)
+        //{
+        //    OnInteractablesExist.Invoke();
+        //}
     }
 
     //public so we can call it from another object after we "destroy" this one
@@ -70,15 +85,19 @@ public class InteractManager : MonoBehaviour
             interactableObjects.Remove(trackedObject);
 
             //see if we hit zero and let folks know
-            if (interactableObjects.Count == 0)
-            {
-                //fire the event
-                OnInteractablesDoNotExist.Invoke();
-            }
+            //if (interactableObjects.Count == 0)
+            //{
+            //    //fire the event
+            //    OnInteractablesDoNotExist.Invoke();
+            //}
+        }
+        if (trackedGhosts.Contains(trackedObject))
+        {
+            trackedGhosts.Remove(trackedObject);
         }
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //if an interactable enters our trigger area
         if (other.CompareTag("Interactable"))
@@ -87,31 +106,27 @@ public class InteractManager : MonoBehaviour
             //then track it
             TrackObject(other.gameObject);
 
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Ghost"))
+        } else if (other.CompareTag("Ghost"))
         {
             if (attacking)
             {
                 Ghost ghost = other.gameObject.GetComponent<Ghost>();
                 ghost.Kill();
                 timeSinceAttackStarted = attackDuration;
-                GameManager.Instance.playerController.ghostInit = false;
+            } else
+            {
+                //BALANCE AND DESIGN: if the player isn't actively attacking then we might want to increase the stress mod?
             }
-            //then track it
-            //TrackObject(other.gameObject);
 
         }
     }
+
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("untrackign object");
         // If the object exiting the trigger is an interactable object
-        if (other.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable") || other.CompareTag("Ghost"))
         {
             UntrackObject(other.gameObject);
         }
@@ -140,9 +155,27 @@ public class InteractManager : MonoBehaviour
 
         } else//if we're not interracting, then we're attacking.
         {
-            
-            attacking = true;
-            timeSinceAttackStarted = 0;
+            if (!attacking)//we don't want to do any of this if we're not in the middle of an attack
+            {
+
+                Debug.Log("attacking?");
+                broomAnimator.SetBool("attacking", true);
+                attacking = true;
+
+                broomAnimator.SetTrigger("Attack");
+                broom.enabled = true;
+                //also call kill on ghost here
+
+                foreach(GameObject go in trackedGhosts)
+                {
+                    Ghost ghost = go.GetComponent<Ghost>();
+
+                    ghost.Kill();
+
+                }
+
+                timeSinceAttackStarted = 0;
+            }
             
         }
 

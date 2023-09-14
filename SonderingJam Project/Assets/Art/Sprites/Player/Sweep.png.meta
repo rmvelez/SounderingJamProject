@@ -113,10 +113,10 @@ TextureImporter:
       name: Sweep_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 41
-        height: 46
+        x: 0
+        y: 0
+        width: 119
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Sweep_1
       rect:
         serializedVersion: 2
-        x: 140
-        y: 13
-        width: 76
-        height: 44
+        x: 119
+        y: 0
+        width: 119
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: Sweep_2
       rect:
         serializedVersion: 2
-        x: 317
-        y: 9
-        width: 40
-        height: 46
+        x: 238
+        y: 0
+        width: 119
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: Sweep_3
       rect:
         serializedVersion: 2
-        x: 435
-        y: 9
-        width: 40
-        height: 46
+        x: 357
+        y: 0
+        width: 119
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

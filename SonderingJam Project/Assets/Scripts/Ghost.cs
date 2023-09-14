@@ -23,10 +23,10 @@ public class Ghost : MonoBehaviour
 
     private Vector3 startingPos;
 
-    public AudioClip ghostAppear;
-    public AudioClip ghostAttack;
-    public AudioClip ghosthurt;
-    private AudioSource ghostSound;
+    [SerializeField] private AudioClip ghostAppear;
+    [SerializeField] private AudioClip ghostAttack;
+    [SerializeField] private AudioClip ghosthurt;
+    [SerializeField] private AudioSource ghostSound;
 
 
     // Start is called before the first frame update
@@ -63,32 +63,33 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(UnityEngine.Collider other)
-    {
-        if (other.CompareTag("PlayerInteract"))
-        {
-            GameObject interactBox = other.gameObject;
-            if(interactBox.GetComponent<InteractManager>() != null)
-            {
-            InteractManager interactManager = interactBox.GetComponent<InteractManager>();
+    //private void OnTriggerStay(UnityEngine.Collider other)
+    //{
+    //    if (other.CompareTag("PlayerInteract"))
+    //    {
+    //        GameObject interactBox = other.gameObject;
+    //        if(interactBox.GetComponent<InteractManager>() != null)
+    //        {
+    //        InteractManager interactManager = interactBox.GetComponent<InteractManager>();
 
-                if (interactManager.getAttacking())
-                {
-                    ghostSound.PlayOneShot(ghostAttack, 1f);
-                    Debug.Log("ghost is kill");
-                }
+    //            if (interactManager.getAttacking())
+    //            {
+    //            }
                 
-            } else
-            {
-                Debug.Log("IUM null");
+    //        } else
+    //        {
+    //            Debug.Log("IUM null");
 
-            }
+    //        }
             
-        }
-    }
+    //    }
+    //}
 
     public void Kill()
     {
+        ghostSound.PlayOneShot(ghostAttack, 1f);
+        Debug.Log("ghost is kill");
+
         ghostSound.PlayOneShot(ghosthurt, 1f);
         Debug.Log("ghost is kill");
         gameObject.SetActive(false);
@@ -108,4 +109,11 @@ public class Ghost : MonoBehaviour
         ghostSound.PlayOneShot(ghostAppear, 1f);
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            ghostSound.PlayOneShot(ghostAttack);
+        }
+    }
 }

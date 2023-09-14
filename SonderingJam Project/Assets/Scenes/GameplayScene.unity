@@ -960,6 +960,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerInteract
       objectReference: {fileID: 0}
+    - target: {fileID: 5721386721226512119, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8540454712803794947, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 4
