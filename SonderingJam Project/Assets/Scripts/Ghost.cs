@@ -20,6 +20,7 @@ public class Ghost : MonoBehaviour
     private Vector2 vectorToPlayer;
 
     [SerializeField] private float chaseDistance;
+    [SerializeField] private float reactivationDistance;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D collider;
@@ -30,6 +31,8 @@ public class Ghost : MonoBehaviour
     [SerializeField] private AudioClip ghostAttack;
     [SerializeField] private AudioClip ghosthurt;
     [SerializeField] private AudioSource ghostSound;
+
+    public bool moving = true;
 
 
     // Start is called before the first frame update
@@ -54,24 +57,33 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(target != null)
+        if (target != null)
         {
-        vectorToPlayer = this.gameObject.transform.position - target.position;
+            vectorToPlayer = this.gameObject.transform.position - target.position;
 
-        } else
+        }
+        else
         {
             Debug.Log("uhuh");
         }
         distanceToPlayer = vectorToPlayer.magnitude;
+        if (moving)
+        {
 
-        if(distanceToPlayer < chaseDistance) { 
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
+
+            if(distanceToPlayer < chaseDistance) { 
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
+            }
+        } else if(distanceToPlayer > reactivationDistance)
+        {
+            moving = true;
         }
     }
 
 
     public void Kill()
     {
+        moving = false;
         //ghostSound.PlayOneShot(ghosthurt);
         Debug.Log("ghost is kill");
         StartCoroutine(playThenDestroy(ghosthurt));
@@ -101,10 +113,11 @@ public class Ghost : MonoBehaviour
 
     public void Spawn()
     {
+        moving = true;
         if (task.Completed)
         {
 
-        task.unCompleteTask();
+            task.unCompleteTask();
         }
         gameObject.SetActive(true);
         ghostSound.PlayOneShot(ghostAppear);
@@ -115,6 +128,12 @@ public class Ghost : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ghostSound.PlayOneShot(ghostAttack);
+            moving = false;
         }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        //moving = true;
     }
 }

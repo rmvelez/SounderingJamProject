@@ -59,6 +59,7 @@ MonoBehaviour:
   playerSpeed: 3
   playerDirection: 0
   moveInput: {x: 0, y: 0}
+  knockBackForce: 1.5
   playerAnimator: {fileID: 6625120062982685885}
   currentMinigame: {fileID: 0}
 --- !u!114 &8540454712803794947

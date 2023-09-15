@@ -103,6 +103,7 @@ MonoBehaviour:
   speed: 0.025
   distanceToPlayer: 0
   chaseDistance: 3
+  reactivationDistance: 5
   ghostAppear: {fileID: 8300000, guid: c653ff0f6cd82f042bb922582a9290e3, type: 3}
   ghostAttack: {fileID: 8300000, guid: e8e441a10106ae54c80a66045c4113b9, type: 3}
   ghosthurt: {fileID: 8300000, guid: e636c6d282962e440816b8e7715d011a, type: 3}

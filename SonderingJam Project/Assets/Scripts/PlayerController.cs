@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField] private Rigidbody2D rigidBody;
+    
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] public Collider2D interractionCollider;
     private GameObject InteractBox;
@@ -25,6 +27,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private PlayerDirection playerDirection;
     [SerializeField] private Vector2 moveInput;
+    [SerializeField] private float knockBackForce = 2;
+    private Vector2 prevDirection = Vector2.zero;
+
 
     [Header("animation")]
     [SerializeField] private Animator playerAnimator;
@@ -34,7 +39,7 @@ public class PlayerController : MonoBehaviour
     //Animation Variables
     private int movementAnimationDirection;
     private float prevAngle = 0;
-    private int prevDirection;
+    private int prevAnimDirection;
     //private const int WALK_LEFT_DIRECTION = 2;
     //private const int WALK_RIGHT_DIRECTION = 2;
     private const int WALK_SIDE_DIRECTION = 2;
@@ -46,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private const int IDLE_UP_DIRECTION = 1;
     private const int IDLE_DOWN_DIRECTION = 5;
 
+    
 
 
     private void Awake()
@@ -56,6 +62,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("player controller added a gameObject that doesn't have a PlayerInput on it -- which is definitely a bug");
         }
         movementAnimationDirection = IDLE_DOWN_DIRECTION;
+        rigidBody.interpolation = RigidbodyInterpolation2D.Extrapolate;
         
     }
 
@@ -99,10 +106,6 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         
-        if (playerInput != null)
-        {
-            rigidBody.velocity = direction * playerSpeed;
-        }
 
 
         if (!Mathf.Approximately(direction.x, 0) || !Mathf.Approximately(direction.y, 0))//if we're inputting movement
@@ -152,6 +155,11 @@ public class PlayerController : MonoBehaviour
                 movementAnimationDirection = WALK_DOWN_DIRECTION;
             }
             prevAngle = angle;
+
+            
+            if (playerInput != null)
+            {
+            }
 
         }
         else //mot moving
@@ -204,8 +212,25 @@ public class PlayerController : MonoBehaviour
                 movementAnimationDirection = IDLE_RIGHT_DIRECTION;
             }*/
 
+
+            //if (direction != prevDirection) //if our direction has changed
+            //{
+            //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
+
+            //}
+            //prevDirection = direction;
+
         }
-        prevDirection = movementAnimationDirection;
+
+
+        if (direction != prevDirection) //if our direction has changed
+        {
+            rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
+            rigidBody.AddForce(direction.normalized * playerSpeed, ForceMode2D.Impulse);
+        }
+        prevDirection = direction;
+
+        prevAnimDirection = movementAnimationDirection;
 
         playerAnimator.SetInteger("Movement", movementAnimationDirection);
 
@@ -243,29 +268,52 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-            //Debug.Log("player hit by ghost(?)");
-        if (other.CompareTag("Ghost")) 
+        //Debug.Log("player hit by ghost(?)");
+        if (other.CompareTag("Ghost"))
         {
             playerHit(other.gameObject);
         }
     }
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //        //Debug.Log("player hit by ghost(?)");
+    //    if (other.gameObject.CompareTag("Ghost")) 
+    //    {
+    //        playerHit(other.gameObject);
+    //    }
+    //}
 
-    private void playerHit(GameObject go)
+    private void playerHit(GameObject other)
     {
 
         Debug.Log("player hit by ghost.");
         //implement knockback? somehow?
         gameManager.IncreaseSress(20);
 
-        Vector2 force = new Vector2(go.transform.position.x + transform.position.x, go.transform.position.y + transform.position.y);
+        Vector2 force = gameObject.transform.position - other.transform.position; 
         Debug.Log(force.ToString());
 
         force.Normalize();
         Debug.Log(force.ToString());
 
         //figure out what I'm doing wrong here
-        rigidBody.velocity += force;
+        //rigidBody.AddForce(force * knockBackForce, ForceMode2D.Impulse);
+        StartCoroutine(Knockback((Vector2)gameObject.transform.position + (force * knockBackForce), other.GetComponent<Ghost>()));
     }
+
+    private IEnumerator Knockback(Vector2 destination, Ghost ghost)
+    {
+        spriteRenderer.color = Color.red; //if we wanted to flash then we'd need a separate coroutine yielding wait.1 second or however long
+        while (((Vector2) gameObject.transform.position - destination).magnitude > 0.1)
+        {
+            rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, 5 * Time.deltaTime));
+            yield return new WaitForFixedUpdate();
+        }
+        spriteRenderer.color = Color.white;
+        ghost.moving = true;
+        yield return null;
+    }
+
 
     public void QuitMiniGame(InputAction.CallbackContext context)
     {
