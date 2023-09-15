@@ -105,8 +105,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
-        
 
+
+        if (playerInput != null)
+        {
+            rigidBody.velocity = direction * playerSpeed;
+        }
 
         if (!Mathf.Approximately(direction.x, 0) || !Mathf.Approximately(direction.y, 0))//if we're inputting movement
         {
@@ -222,13 +226,12 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
-        if (direction != prevDirection) //if our direction has changed
-        {
-            rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
-            rigidBody.AddForce(direction.normalized * playerSpeed, ForceMode2D.Impulse);
-        }
-        prevDirection = direction;
+        //if (direction != prevDirection) //if our direction has changed
+        //{
+        //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
+        //    rigidBody.AddForce(direction.normalized * playerSpeed, ForceMode2D.Impulse);
+        //}
+        //prevDirection = direction;
 
         prevAnimDirection = movementAnimationDirection;
 
@@ -291,7 +294,7 @@ public class PlayerController : MonoBehaviour
         gameManager.IncreaseSress(20);
 
         Vector2 force = gameObject.transform.position - other.transform.position; 
-        Debug.Log(force.ToString());
+        //Debug.Log(force.ToString());
 
         force.Normalize();
         Debug.Log(force.ToString());
