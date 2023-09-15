@@ -75,7 +75,6 @@ public class Ghost : MonoBehaviour
         //ghostSound.PlayOneShot(ghosthurt);
         Debug.Log("ghost is kill");
         StartCoroutine(playThenDestroy(ghosthurt));
-        transform.position = startingPos;
         Debug.Log("resetting pos");
     }
 
@@ -93,7 +92,8 @@ public class Ghost : MonoBehaviour
         }
 
         spriteRenderer.enabled = true;
-        collider.enabled = true; 
+        transform.position = startingPos;
+        collider.enabled = true;
         gameObject.SetActive(false);
 
 
