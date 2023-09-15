@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         if(Tasks.Count > 0)
         {
 
-            int rand = Random.Range(0, Tasks.Count-1);
+            int rand = Random.Range(0, Tasks.Count);
             Ghost ghost = Tasks[rand].ghost;
             ghost.Spawn();
             Tasks.RemoveAt(rand);
