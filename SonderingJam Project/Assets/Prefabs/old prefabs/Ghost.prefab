@@ -106,6 +106,7 @@ MonoBehaviour:
   ghostAppear: {fileID: 8300000, guid: c653ff0f6cd82f042bb922582a9290e3, type: 3}
   ghostAttack: {fileID: 8300000, guid: e8e441a10106ae54c80a66045c4113b9, type: 3}
   ghosthurt: {fileID: 8300000, guid: e636c6d282962e440816b8e7715d011a, type: 3}
+  ghostSound: {fileID: 2163286011355805529}
 --- !u!61 &1290439505952025776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

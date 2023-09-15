@@ -21,6 +21,9 @@ public class Ghost : MonoBehaviour
 
     [SerializeField] private float chaseDistance;
 
+    private SpriteRenderer spriteRenderer;
+    private Collider2D collider;
+
     private Vector3 startingPos;
 
     [SerializeField] private AudioClip ghostAppear;
@@ -42,7 +45,10 @@ public class Ghost : MonoBehaviour
         task.unCompleteTask();
         gameObject.SetActive(false);
 
-        ghostSound = GetComponent<AudioSource>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        collider = gameObject.GetComponent<Collider2D>();
+
+        //ghostSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,38 +69,33 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    //private void OnTriggerStay(UnityEngine.Collider other)
-    //{
-    //    if (other.CompareTag("PlayerInteract"))
-    //    {
-    //        GameObject interactBox = other.gameObject;
-    //        if(interactBox.GetComponent<InteractManager>() != null)
-    //        {
-    //        InteractManager interactManager = interactBox.GetComponent<InteractManager>();
-
-    //            if (interactManager.getAttacking())
-    //            {
-    //            }
-                
-    //        } else
-    //        {
-    //            Debug.Log("IUM null");
-
-    //        }
-            
-    //    }
-    //}
 
     public void Kill()
     {
-        ghostSound.PlayOneShot(ghostAttack, 1f);
+        //ghostSound.PlayOneShot(ghosthurt);
         Debug.Log("ghost is kill");
-
-        ghostSound.PlayOneShot(ghosthurt, 1f);
-        Debug.Log("ghost is kill");
-        gameObject.SetActive(false);
+        StartCoroutine(playThenDestroy(ghosthurt));
         transform.position = startingPos;
+        Debug.Log("resetting pos");
+    }
+
+    private IEnumerator playThenDestroy(AudioClip clip)
+    {
+        //player.GetComponentInChildren<InteractManager>().UntrackObject(gameObject);
         GameManager.Instance.DespawnGhost(task);
+        spriteRenderer.enabled = false;
+        collider.enabled = false;
+        ghostSound.PlayOneShot(clip);
+
+        while (ghostSound.isPlaying)
+        {
+            yield return null;
+        }
+
+        spriteRenderer.enabled = true;
+        collider.enabled = true; 
+        gameObject.SetActive(false);
+
 
     }
 
@@ -106,7 +107,7 @@ public class Ghost : MonoBehaviour
         task.unCompleteTask();
         }
         gameObject.SetActive(true);
-        ghostSound.PlayOneShot(ghostAppear, 1f);
+        ghostSound.PlayOneShot(ghostAppear);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

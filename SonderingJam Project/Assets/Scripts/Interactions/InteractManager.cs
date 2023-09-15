@@ -28,13 +28,14 @@ public class InteractManager : MonoBehaviour
     private void Start()
     {
         broom.enabled = false;
+        broomAnimator.SetFloat("AnimationTime", 1 / attackDuration);
     }
 
     private void FixedUpdate()
     {
         if (attacking)
         {
-            broomAnimator.SetFloat("AnimationTime", 1/attackDuration);
+
 
             //broom.enabled = true;
             //broomAnimator.SetTrigger("Attack");
@@ -47,6 +48,21 @@ public class InteractManager : MonoBehaviour
                 attacking = false;
                 broomAnimator.SetBool("attacking", false);
                 broom.enabled = false;
+            }
+
+            if(trackedGhosts.Count > 0)
+            {
+                foreach (GameObject go in trackedGhosts)
+                {
+                    Ghost ghost = go.GetComponent<Ghost>();
+
+                    ghost.Kill();
+                }
+                foreach(GameObject go in trackedGhosts)
+                {
+                    UntrackObject(go);
+                }
+
             }
         } else
         {
@@ -108,15 +124,7 @@ public class InteractManager : MonoBehaviour
 
         } else if (other.CompareTag("Ghost"))
         {
-            if (attacking)
-            {
-                Ghost ghost = other.gameObject.GetComponent<Ghost>();
-                ghost.Kill();
-                timeSinceAttackStarted = attackDuration;
-            } else
-            {
-                //BALANCE AND DESIGN: if the player isn't actively attacking then we might want to increase the stress mod?
-            }
+            TrackObject(other.gameObject);
 
         }
     }
@@ -166,13 +174,7 @@ public class InteractManager : MonoBehaviour
                 broom.enabled = true;
                 //also call kill on ghost here
 
-                foreach(GameObject go in trackedGhosts)
-                {
-                    Ghost ghost = go.GetComponent<Ghost>();
 
-                    ghost.Kill();
-
-                }
 
                 timeSinceAttackStarted = 0;
             }
