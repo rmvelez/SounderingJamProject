@@ -900,10 +900,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1242991075628987068, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: attackDuration
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 4202753276839889874, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
       value: -0.023747362
@@ -1011,22 +1007,6 @@ PrefabInstance:
     - target: {fileID: 8540454712803794947, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8689599246416755186, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Size.x
-      value: 0.44231182
-      objectReference: {fileID: 0}
-    - target: {fileID: 8689599246416755186, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Size.y
-      value: 0.7579844
-      objectReference: {fileID: 0}
-    - target: {fileID: 8689599246416755186, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0017537773
-      objectReference: {fileID: 0}
-    - target: {fileID: 8689599246416755186, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.011391282
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

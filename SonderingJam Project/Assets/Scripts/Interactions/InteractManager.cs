@@ -46,7 +46,6 @@ public class InteractManager : MonoBehaviour
             } else
             {
                 attacking = false;
-                broomAnimator.SetBool("attacking", false);
                 broom.enabled = false;
             }
 
@@ -167,7 +166,6 @@ public class InteractManager : MonoBehaviour
             {
 
                 Debug.Log("attacking?");
-                broomAnimator.SetBool("attacking", true);
                 attacking = true;
 
                 broomAnimator.SetTrigger("Attack");
