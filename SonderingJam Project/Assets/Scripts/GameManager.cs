@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public List<Task> Tasks = new List<Task>();
 
+    [SerializeField] private ScoreKeeper scoreKeeper;
     private float Timer = 0;
     public float finalTimer = 0;
 
@@ -47,8 +48,7 @@ public class GameManager : MonoBehaviour
             //we're the first gameManager, so assign ourselves to this instance
             _instance = this;
 
-            //keep ourselves between levels
-            DontDestroyOnLoad(this.gameObject);
+            // don't keep ourselves between levels
         }
         else
         {
@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         if ((stressMeter >= stressMeterMax) && !Lost) 
         {
             finalTimer = Timer;
+            scoreKeeper.score = Timer;
             SceneManager.LoadScene("GameOverScene");
             Lost = true;
         }

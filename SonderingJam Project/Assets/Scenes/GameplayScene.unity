@@ -751,6 +751,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c5acf3ba513bc43a05ed57683cf55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &695325597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695325599}
+  - component: {fileID: 695325598}
+  m_Layer: 0
+  m_Name: ScoreKeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &695325598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695325597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acc09d2e0bf0064eb2bd4652fb7cec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+--- !u!4 &695325599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695325597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.505867, y: 0.55936337, z: 1.002078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &825724623 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2222030024229068485, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
@@ -1731,6 +1776,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
+      propertyPath: scoreKeeper
+      value: 
+      objectReference: {fileID: 695325598}
+    - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 825724623}
@@ -2694,3 +2743,4 @@ SceneRoots:
   - {fileID: 1801187259}
   - {fileID: 253873284}
   - {fileID: 1864225541}
+  - {fileID: 695325599}
