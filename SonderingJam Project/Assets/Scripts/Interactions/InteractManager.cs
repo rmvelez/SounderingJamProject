@@ -57,10 +57,8 @@ public class InteractManager : MonoBehaviour
 
                     ghost.Kill();
                 }
-                foreach(GameObject go in trackedGhosts)
-                {
-                    UntrackObject(go);
-                }
+
+                trackedGhosts.Clear();
 
             }
         } else
@@ -133,7 +131,7 @@ public class InteractManager : MonoBehaviour
     {
         Debug.Log("untrackign object");
         // If the object exiting the trigger is an interactable object
-        if (other.CompareTag("Interactable") || other.CompareTag("Ghost"))
+        if (other.CompareTag("Interactable"))
         {
             UntrackObject(other.gameObject);
         }
