@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Collider2D interractionCollider;
     private GameObject InteractBox;
     [SerializeField] public Collider2D hitboxCollider;
+    [SerializeField] private float invincibilityDuration = 1f;
+    private float timeSinceHit = 0f;
     [Tooltip("the interact manager for the player")]
     [SerializeField] public InteractManager interactManager;
 
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private float knockBackForce = 2;
     private Vector2 prevDirection = Vector2.zero;
-
+    private bool touchingWall = false;
 
     [Header("animation")]
     [SerializeField] private Animator playerAnimator;
@@ -87,7 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         Move(moveInput);
 
-        
+        if(timeSinceHit <= invincibilityDuration)
+        {
+            timeSinceHit += Time.deltaTime;
+        }
     }
 
     public void MoveActionPerformed(InputAction.CallbackContext context)
@@ -274,7 +279,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("player hit by ghost(?)");
         if (other.CompareTag("Ghost"))
         {
-            playerHit(other.gameObject);
+            if(invincibilityDuration <= timeSinceHit)
+            {
+                playerHit(other.gameObject);
+                timeSinceHit = 0;
+            }
         }
     }
     //private void OnCollisionEnter2D(Collision2D other)
@@ -285,6 +294,23 @@ public class PlayerController : MonoBehaviour
     //        playerHit(other.gameObject);
     //    }
     //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            touchingWall = true;
+        }
+    }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            touchingWall = false;
+
+        }
+    }
 
     private void playerHit(GameObject other)
     {
@@ -307,13 +333,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Knockback(Vector2 destination, Ghost ghost)
     {
         spriteRenderer.color = Color.red; //if we wanted to flash then we'd need a separate coroutine yielding wait.1 second or however long
-        while (((Vector2) gameObject.transform.position - destination).magnitude > 0.1)
+        while ((((Vector2) gameObject.transform.position - destination).magnitude > 0.1) && (!touchingWall))
         {
             rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, 5 * Time.deltaTime));
             yield return new WaitForFixedUpdate();
         }
         spriteRenderer.color = Color.white;
-        ghost.moving = true;
+        if (!touchingWall)
+        {
+            ghost.moving = true;
+        }
         yield return null;
     }
 

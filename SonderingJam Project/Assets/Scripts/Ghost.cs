@@ -92,8 +92,6 @@ public class Ghost : MonoBehaviour
 
     private IEnumerator playThenDestroy(AudioClip clip)
     {
-        //player.GetComponentInChildren<InteractManager>().UntrackObject(gameObject);
-        GameManager.Instance.DespawnGhost(task);
         spriteRenderer.enabled = false;
         collider.enabled = false;
         ghostSound.PlayOneShot(clip);
@@ -107,6 +105,8 @@ public class Ghost : MonoBehaviour
         transform.position = startingPos;
         collider.enabled = true;
         gameObject.SetActive(false);
+        //player.GetComponentInChildren<InteractManager>().UntrackObject(gameObject);
+        GameManager.Instance.DespawnGhost(task);
 
 
     }

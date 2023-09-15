@@ -60,10 +60,10 @@ public class GameManager : MonoBehaviour
 
     public void SpawnGhost()
     {
-        numGhosts++;
         if(Tasks.Count > 0)
         {
 
+            numGhosts++;
             int rand = Random.Range(0, Tasks.Count);
             Ghost ghost = Tasks[rand].ghost;
             ghost.Spawn();

@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 206235769}
   - component: {fileID: 206235771}
   - component: {fileID: 206235770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 390946387}
   - component: {fileID: 390946389}
   - component: {fileID: 390946388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 415263625}
   - component: {fileID: 415263627}
   - component: {fileID: 415263626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MidWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 876493701}
   - component: {fileID: 876493703}
   - component: {fileID: 876493702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TopWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 993116509}
   - component: {fileID: 993116511}
   - component: {fileID: 993116510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BottomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   - component: {fileID: 1068657696}
   - component: {fileID: 1068657698}
   - component: {fileID: 1068657697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SideWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 1240275163}
   - component: {fileID: 1240275165}
   - component: {fileID: 1240275164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MidWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 1603758618}
   - component: {fileID: 1603758620}
   - component: {fileID: 1603758619}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SideWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1884,7 +1884,7 @@ GameObject:
   - component: {fileID: 1653660230}
   - component: {fileID: 1653660232}
   - component: {fileID: 1653660231}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SideWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2014,7 +2014,7 @@ GameObject:
   - component: {fileID: 1675654309}
   - component: {fileID: 1675654311}
   - component: {fileID: 1675654310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SideWall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031569153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2432,7 +2432,7 @@ GameObject:
   - component: {fileID: 2086870316}
   - component: {fileID: 2086870318}
   - component: {fileID: 2086870317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MidWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2562,7 +2562,7 @@ GameObject:
   - component: {fileID: 2091804100}
   - component: {fileID: 2091804102}
   - component: {fileID: 2091804101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SideWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
