@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private float knockBackForce = 2;
     private Vector2 prevDirection = Vector2.zero;
-    private bool touchingWall = false;
+    public bool touchingWall = false;
 
     [Header("animation")]
     [SerializeField] private Animator playerAnimator;
@@ -323,25 +323,41 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(force.ToString());
 
         force.Normalize();
-        Debug.Log(force.ToString());
+        //Debug.Log(force.ToString());
 
         //figure out what I'm doing wrong here
         //rigidBody.AddForce(force * knockBackForce, ForceMode2D.Impulse);
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, force, (force * knockBackForce).magnitude);
+        
+
         StartCoroutine(Knockback((Vector2)gameObject.transform.position + (force * knockBackForce), other.GetComponent<Ghost>()));
     }
 
     private IEnumerator Knockback(Vector2 destination, Ghost ghost)
     {
+
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, destination.normalized, 5 * Time.deltaTime, 6);
+        Debug.DrawRay(raycast.centroid, raycast.point , Color.red, .1f);
+
+        RaycastHit2D boxCast =  Physics2D.BoxCast(transform.position, hitboxCollider.bounds.size, 0f, destination.normalized, 5*Time.deltaTime, 6);
+
+        touchingWall = (boxCast.collider != null);
+
+        //Debug.DrawLine(raycast.point, raycast.)
+        Debug.Log(raycast.distance);
         spriteRenderer.color = Color.red; //if we wanted to flash then we'd need a separate coroutine yielding wait.1 second or however long
+        //while ((((Vector2) gameObject.transform.position - destination).magnitude > 0.1) && (!touchingWall))
         while ((((Vector2) gameObject.transform.position - destination).magnitude > 0.1) && (!touchingWall))
         {
+
+
             rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, 5 * Time.deltaTime));
             yield return new WaitForFixedUpdate();
         }
         spriteRenderer.color = Color.white;
-        if (!touchingWall)
+        if (boxCast.collider != null)
         {
-            ghost.moving = true;
+            ghost.moving = false;
         }
         yield return null;
     }
