@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
             ghost.Spawn();
             Tasks.RemoveAt(rand);
         }
+        scoreKeeper = ScoreKeeper.Instance;
     }
 
     public void DespawnGhost(Task task)
