@@ -88,7 +88,6 @@ public class Ghost : MonoBehaviour
         //ghostSound.PlayOneShot(ghosthurt);
         Debug.Log("ghost is kill");
         StartCoroutine(playThenDestroy(ghosthurt));
-        Debug.Log("resetting pos");
     }
 
     private IEnumerator playThenDestroy(AudioClip clip)

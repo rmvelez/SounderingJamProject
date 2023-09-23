@@ -324,14 +324,6 @@ public class PlayerController : MonoBehaviour
                 destination - (Vector2)gameObject.transform.position, 2 * knockBackSpeed * Time.deltaTime, wallLayerMask);
             touchingWall = (boxCast.collider != null);
 
-            if (touchingWall)
-            {
-                Debug.Log("ping");
-            } else
-            {
-                Debug.Log("distance" + 3 * knockBackSpeed * Time.deltaTime);
-
-            }
 
             rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, knockBackSpeed * Time.deltaTime));
             yield return new WaitForFixedUpdate();
