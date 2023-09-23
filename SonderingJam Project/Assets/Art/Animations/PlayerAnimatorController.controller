@@ -125,9 +125,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.2500001
   m_TransitionOffset: 0
-  m_ExitTime: 0.516129
+  m_ExitTime: 0.7276574
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -328,9 +328,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.2500001
   m_TransitionOffset: 0
-  m_ExitTime: 0.516129
+  m_ExitTime: 0.66842943
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -457,9 +457,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.25000003
   m_TransitionOffset: 0
-  m_ExitTime: 0.516129
+  m_ExitTime: 0.7234268
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -482,9 +482,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.24999997
   m_TransitionOffset: 0
-  m_ExitTime: 0.516129
+  m_ExitTime: 0.7488103
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -507,16 +507,16 @@ AnimatorStateMachine:
     m_Position: {x: -230, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3347674279753537310}
-    m_Position: {x: -350, y: 460, z: 0}
+    m_Position: {x: 360, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6666947166929996567}
-    m_Position: {x: 380, y: 390, z: 0}
+    m_Position: {x: 60, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8593581880386339399}
-    m_Position: {x: -60, y: 720, z: 0}
+    m_Position: {x: 480, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8116542372079412557}
-    m_Position: {x: 80, y: 510, z: 0}
+    m_Position: {x: -320, y: 540, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -733,9 +733,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.25000003
   m_TransitionOffset: 0
-  m_ExitTime: 0.516129
+  m_ExitTime: 0.7403491
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0

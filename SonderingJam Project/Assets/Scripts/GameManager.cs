@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ObjectPool<Task> taskPool;
        
 
+    [SerializeField] private ScoreKeeper scoreKeeper;
     private float Timer = 0;
     public float finalTimer = 0;
 
@@ -52,8 +53,7 @@ public class GameManager : MonoBehaviour
             //we're the first gameManager, so assign ourselves to this instance
             _instance = this;
 
-            //keep ourselves between levels
-            DontDestroyOnLoad(this.gameObject);
+            // don't keep ourselves between levels
         }
         else
         {
@@ -73,15 +73,17 @@ public class GameManager : MonoBehaviour
 
     public void SpawnGhost()
     {
-        numGhosts++;
         if(Tasks.Count-1 > 0)
         {
 
             int rand = Random.Range(0, Tasks.Count-1);
+            numGhosts++;
+
             Ghost ghost = Tasks[rand].ghost;
             ghost.Spawn();
             Tasks.RemoveAt(rand);
         }
+        scoreKeeper = ScoreKeeper.Instance;
     }
 
     public void DespawnGhost(Task task)
@@ -118,6 +120,7 @@ public class GameManager : MonoBehaviour
         if ((stressMeter >= stressMeterMax) && !Lost) 
         {
             finalTimer = Timer;
+            scoreKeeper.score = Timer;
             SceneManager.LoadScene("GameOverScene");
             Lost = true;
         }
