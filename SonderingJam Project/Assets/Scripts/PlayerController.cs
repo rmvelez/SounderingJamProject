@@ -136,14 +136,14 @@ public class PlayerController : MonoBehaviour
             if (direction.x < 0)//if we're moving left
             {
 
-                GetComponent<SpriteRenderer>().flipX = true;
+                spriteRenderer.flipX = true;
                 movementAnimationDirection = WALK_SIDE_DIRECTION;
 
                 //flip sprite left
             }
             else if (direction.x > 0) //if we're moving right
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                spriteRenderer.flipX = false;
 
                 //flip sprite right
 
@@ -191,47 +191,9 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            /*
-                Debug.Log(" 4.1");
-            if (direction.x < 0)//if we're moving left
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-                movementAnimationDirection = IDLE_LEFT_DIRECTION;
-            }
-            else if (direction.x > 0) //if we're moving right
-            {
-                //flip sprite right
-
-                GetComponent<SpriteRenderer>().flipX = false;
-                movementAnimationDirection = IDLE_RIGHT_DIRECTION;
-            }
-            else if (direction.y > 0) //and the player is moving up
-            {
-                movementAnimationDirection = IDLE_UP_DIRECTION;
-            }
-            else if (direction.y < 0) //if we're moving down
-            {
-                //flip sprite down
-
-                movementAnimationDirection = IDLE_RIGHT_DIRECTION;
-            }*/
-
-
-            //if (direction != prevDirection) //if our direction has changed
-            //{
-            //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
-
-            //}
-            //prevDirection = direction;
 
         }
 
-        //if (direction != prevDirection) //if our direction has changed
-        //{
-        //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
-        //    rigidBody.AddForce(direction.normalized * playerSpeed, ForceMode2D.Impulse);
-        //}
-        //prevDirection = direction;
 
         prevAnimDirection = movementAnimationDirection;
 

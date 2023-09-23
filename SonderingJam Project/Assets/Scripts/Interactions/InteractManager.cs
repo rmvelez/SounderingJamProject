@@ -145,7 +145,6 @@ public class InteractManager : MonoBehaviour
 
         //    UntrackObject(interactableObjects[0]);
         //}
-        Debug.Log("interact object calld (on object?)");
 
         //make sure we still have objects
         if (interactableObjects.Count > 0)
@@ -163,7 +162,6 @@ public class InteractManager : MonoBehaviour
             if (!attacking)//we don't want to do any of this if we're not in the middle of an attack
             {
 
-                Debug.Log("attacking?");
                 attacking = true;
 
                 broomAnimator.SetTrigger("Attack");
