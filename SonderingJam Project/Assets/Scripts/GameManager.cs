@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected float numGhosts = 0;
 
     public List<Task> Tasks = new List<Task>();
+    [SerializeField] private ObjectPool<Task> taskPool;
+       
 
     private float Timer = 0;
     public float finalTimer = 0;
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float ghostModifier = 3.0f;
     [Tooltip("how much stress you lose from completing a task")]
     [SerializeField] private float taskCompleteDestressAmount = 30f;
+    [SerializeField] private float startingStressAmount = 33f;
+
 
     [SerializeField] private float stressMeterMax;
 
@@ -58,13 +63,21 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        stressMeter = startingStressAmount;
+    }
+
+
     public void SpawnGhost()
     {
         numGhosts++;
-        if(Tasks.Count > 0)
+        if(Tasks.Count-1 > 0)
         {
 
-            int rand = Random.Range(0, Tasks.Count);
+            int rand = Random.Range(0, Tasks.Count-1);
             Ghost ghost = Tasks[rand].ghost;
             ghost.Spawn();
             Tasks.RemoveAt(rand);
@@ -75,12 +88,6 @@ public class GameManager : MonoBehaviour
     {
         Tasks.Add(task);
         numGhosts--;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        stressMeter = 33;
     }
 
     // Update is called once per frame
