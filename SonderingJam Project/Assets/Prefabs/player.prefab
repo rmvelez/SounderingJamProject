@@ -54,12 +54,18 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4456504935229061920}
   interractionCollider: {fileID: 4202753276839889874}
   hitboxCollider: {fileID: 8689599246416755186}
+  invincibilityDuration: 1
   interactManager: {fileID: 1242991075628987068}
   playerInput: {fileID: 8540454712803794947}
   playerSpeed: 3
   playerDirection: 0
   moveInput: {x: 0, y: 0}
   knockBackForce: 1.5
+  knockBackSpeed: 5
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  touchingWall: 0
   playerAnimator: {fileID: 6625120062982685885}
   currentMinigame: {fileID: 0}
 --- !u!114 &8540454712803794947

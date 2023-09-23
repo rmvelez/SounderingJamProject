@@ -945,6 +945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2222030024229068485, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
+      propertyPath: knockBackSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4202753276839889874, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
       value: -0.023747362
@@ -1004,10 +1008,6 @@ PrefabInstance:
     - target: {fileID: 5721386721226512119, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_BodyType
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721386721226512119, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540454712803794947, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_ActionEvents.Array.size
@@ -1318,7 +1318,7 @@ Transform:
   m_GameObject: {fileID: 1068657695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.24, y: 0.86, z: 0}
+  m_LocalPosition: {x: 6.24, y: 0.89, z: 0}
   m_LocalScale: {x: 2.5, y: 0.46, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1541,7 +1541,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1, y: -1.95, z: 0}
-  m_LocalScale: {x: 0.4, y: 6, z: 1}
+  m_LocalScale: {x: 0.4, y: 6.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2031569153}
@@ -1787,10 +1787,6 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 825724623}
-    - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
-      propertyPath: stressMeterScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1824,7 +1820,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.9, y: 0.86, z: 0}
-  m_LocalScale: {x: 5, y: 0.46, z: 1}
+  m_LocalScale: {x: 5, y: 0.45, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2031569153}

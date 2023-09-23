@@ -78,7 +78,7 @@ public class Ghost : MonoBehaviour
         {
             moving = true;
         }
-        moving = !player.touchingWall;
+        //moving = !player.touchingWall;
     }
 
 
