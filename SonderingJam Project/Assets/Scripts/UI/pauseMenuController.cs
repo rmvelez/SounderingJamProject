@@ -31,7 +31,7 @@ public class pauseMenuController : MonoBehaviour
         gameManager.onGamePause.AddListener(Pause);
         gameManager.onGameResume.AddListener(Resume);
 
-        resumeButton.clicked += Resume;
+        resumeButton.clicked += StartResume;
         mainMenuButton.clicked += GoToMainMenu;
         quitButton.clicked += () => { Application.Quit();  };
     }
@@ -44,6 +44,11 @@ public class pauseMenuController : MonoBehaviour
     private void GoToMainMenu()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    private void StartResume()
+    {
+        gameManager.ResumeGame();
     }
 
     private void Resume()
