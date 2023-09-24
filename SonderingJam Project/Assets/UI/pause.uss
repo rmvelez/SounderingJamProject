@@ -1,0 +1,15 @@
+.pauseButton {
+    flex-grow: 0.75;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 40%;
+    background-color: rgb(160, 58, 160);
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    font-size: 32px;
+    color: rgb(36, 34, 52);
+    padding-right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
