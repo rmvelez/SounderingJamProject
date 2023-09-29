@@ -5,28 +5,34 @@ using UnityEngine.UIElements;
 
 public class HUDCOntroller : MonoBehaviour
 {
-    [SerializeField] public SpriteRenderer barSprite;
 
-    [SerializeField] private Vector3 barStartPosition;
 
-    private float stressMax = 100;
-    private float stressValue = 0;
+    [SerializeField] private UIDocument uiDoc;
 
     private GameManager gameManager;
+
+    private VisualElement root;
+    private VerticalProgressBar stressBar;
+
+
+
+    private float stressMax ;
+    private float stressValue;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
+
+        stressMax = gameManager.GetStressMax();
+        stressBar = uiDoc.rootVisualElement.Q<VerticalProgressBar>("StressBar");
     }
 
     // Update is called once per frame
     void Update()
     {
         stressValue = gameManager.getStressMeter();
-        float progressPercent = (stressValue / stressMax) * 9.25f;
-
-        barSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ barStartPosition.y + (progressPercent / 2), 0);
-        barSprite.transform.localScale = new Vector3(2.26f, progressPercent , 9.25f);
+        stressBar.value = stressValue;
     }
 }

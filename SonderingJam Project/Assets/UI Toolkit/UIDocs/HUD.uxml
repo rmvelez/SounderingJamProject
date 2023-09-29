@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Style%20Sheets/ProgressBarUSS.uss?fileID=7433441132597879392&amp;guid=c98feba27bde2df46915606fb4083386&amp;type=3#ProgressBarUSS" />
+    <ui:VisualElement name="root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: flex-end; align-self: stretch;">
+        <ui:VisualElement style="flex-grow: 0; height: 1080px; width: 214px; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Art/Sprites/HUD_widthFix.jpg?fileID=2800000&amp;guid=51ca604f90c13b642b6b3757b36c6908&amp;type=3#HUD_widthFix&apos;); flex-direction: column; justify-content: flex-end; align-self: center; align-items: center;">
+            <VerticalProgressBar name="StressBar" value="126.4" high-value="100" low-value="2.1" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 1013px; width: 168px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; flex-direction: column-reverse;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

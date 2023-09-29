@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private float stressMeterMax;
+    public float GetStressMax() { return  stressMeterMax; }
 
     [Header("Ghost Variables")]
     [SerializeField] private float ghostSpawnTime = 10;

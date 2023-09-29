@@ -1,3 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:Button text="Resume" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-grow: 0.25; padding-top: 20px; padding-bottom: 20px; width: 40%; background-color: rgb(160, 58, 160); -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;); font-size: 32px; color: rgb(36, 34, 52);" />
-</ui:UXML>
