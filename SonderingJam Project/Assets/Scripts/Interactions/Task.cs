@@ -21,7 +21,7 @@ public class Task : MonoBehaviour, IInteractable
     void Start()
     {
         gameManager = GameManager.Instance;
-        gameManager.Tasks.Add(this);
+        gameManager.AddTask(this);
     }
 
 

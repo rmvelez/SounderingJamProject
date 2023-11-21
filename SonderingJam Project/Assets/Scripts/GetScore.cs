@@ -5,21 +5,21 @@ using TMPro;
 
 public class GetScore : MonoBehaviour
 {
-
-    GameManager gameManager;
-
     public TMP_Text score;
 
+    [SerializeField] private ScoreKeeper scoreKeeper;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
+        //gameManager = GameManager.Instance;
+        scoreKeeper = ScoreKeeper.Instance;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        score.text = GameManager.Instance.finalTimer.ToString();
+        score.text = scoreKeeper.score.ToString();
     }
 }

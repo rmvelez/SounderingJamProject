@@ -12,7 +12,7 @@ public class Ghost : MonoBehaviour
     [SerializeField] private Task task;
 
     [SerializeField] private float speed;
-    private GameObject player;
+    private PlayerController player;
 
     public float distanceToPlayer;
     private Transform target;
@@ -40,8 +40,8 @@ public class Ghost : MonoBehaviour
     {
         gameManager = GameManager.Instance;
 
-        player = gameManager.playerController.gameObject;
-        target = player.transform;
+        player = gameManager.playerController;
+        target = player.gameObject.transform;
 
         startingPos = transform.position;
 
@@ -74,10 +74,11 @@ public class Ghost : MonoBehaviour
             if(distanceToPlayer < chaseDistance) { 
                 transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
             }
-        } else if(distanceToPlayer > reactivationDistance)
+        } else if(distanceToPlayer > reactivationDistance && !player.touchingWall)
         {
             moving = true;
         }
+        //moving = !player.touchingWall;
     }
 
 
@@ -87,13 +88,10 @@ public class Ghost : MonoBehaviour
         //ghostSound.PlayOneShot(ghosthurt);
         Debug.Log("ghost is kill");
         StartCoroutine(playThenDestroy(ghosthurt));
-        Debug.Log("resetting pos");
     }
 
     private IEnumerator playThenDestroy(AudioClip clip)
     {
-        //player.GetComponentInChildren<InteractManager>().UntrackObject(gameObject);
-        GameManager.Instance.DespawnGhost(task);
         spriteRenderer.enabled = false;
         collider.enabled = false;
         ghostSound.PlayOneShot(clip);
@@ -107,6 +105,8 @@ public class Ghost : MonoBehaviour
         transform.position = startingPos;
         collider.enabled = true;
         gameObject.SetActive(false);
+        //player.GetComponentInChildren<InteractManager>().UntrackObject(gameObject);
+        GameManager.Instance.DespawnGhost(task);
 
 
     }

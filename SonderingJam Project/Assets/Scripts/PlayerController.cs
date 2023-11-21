@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Collider2D interractionCollider;
     private GameObject InteractBox;
     [SerializeField] public Collider2D hitboxCollider;
+    [SerializeField] private float invincibilityDuration = 1f;
+    private float timeSinceHit = 0f;
     [Tooltip("the interact manager for the player")]
     [SerializeField] public InteractManager interactManager;
 
@@ -27,8 +29,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private PlayerDirection playerDirection;
     [SerializeField] private Vector2 moveInput;
+
+    [Header("knockback")]
+    [SerializeField] RaycastHit2D boxCast;
     [SerializeField] private float knockBackForce = 2;
-    private Vector2 prevDirection = Vector2.zero;
+    [SerializeField] private float knockBackSpeed = 5;
+    [SerializeField] private LayerMask wallLayerMask;
+    public bool touchingWall = false;
 
 
     [Header("animation")]
@@ -87,7 +94,10 @@ public class PlayerController : MonoBehaviour
     {
         Move(moveInput);
 
-        
+        if(timeSinceHit <= invincibilityDuration)
+        {
+            timeSinceHit += Time.deltaTime;
+        }
     }
 
     public void MoveActionPerformed(InputAction.CallbackContext context)
@@ -114,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
         if (!Mathf.Approximately(direction.x, 0) || !Mathf.Approximately(direction.y, 0))//if we're inputting movement
         {
+            touchingWall = false;
 
             Vector3 targetPosition = new Vector3(this.transform.position.x + direction.y, this.transform.position.y - direction.x, 0);
             Vector3 dir = targetPosition - this.transform.position;
@@ -127,9 +138,6 @@ public class PlayerController : MonoBehaviour
                 InteractBox.transform.RotateAround(transform.position, Vector3.forward, -prevAngle );
                 InteractBox.transform.RotateAround(transform.position, Vector3.forward, angle);
             }
-
-
-
 
 
 
@@ -191,47 +199,8 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            /*
-                Debug.Log(" 4.1");
-            if (direction.x < 0)//if we're moving left
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-                movementAnimationDirection = IDLE_LEFT_DIRECTION;
-            }
-            else if (direction.x > 0) //if we're moving right
-            {
-                //flip sprite right
-
-                GetComponent<SpriteRenderer>().flipX = false;
-                movementAnimationDirection = IDLE_RIGHT_DIRECTION;
-            }
-            else if (direction.y > 0) //and the player is moving up
-            {
-                movementAnimationDirection = IDLE_UP_DIRECTION;
-            }
-            else if (direction.y < 0) //if we're moving down
-            {
-                //flip sprite down
-
-                movementAnimationDirection = IDLE_RIGHT_DIRECTION;
-            }*/
-
-
-            //if (direction != prevDirection) //if our direction has changed
-            //{
-            //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
-
-            //}
-            //prevDirection = direction;
 
         }
-
-        //if (direction != prevDirection) //if our direction has changed
-        //{
-        //    rigidBody.AddForce(rigidBody.velocity * -1, ForceMode2D.Impulse);
-        //    rigidBody.AddForce(direction.normalized * playerSpeed, ForceMode2D.Impulse);
-        //}
-        //prevDirection = direction;
 
         prevAnimDirection = movementAnimationDirection;
 
@@ -274,7 +243,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("player hit by ghost(?)");
         if (other.CompareTag("Ghost"))
         {
-            playerHit(other.gameObject);
+            if(invincibilityDuration <= timeSinceHit)
+            {
+                playerHit(other.gameObject);
+                timeSinceHit = 0;
+            }
         }
     }
     //private void OnCollisionEnter2D(Collision2D other)
@@ -285,6 +258,23 @@ public class PlayerController : MonoBehaviour
     //        playerHit(other.gameObject);
     //    }
     //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            //touchingWall = true;
+        }
+    }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            //touchingWall = false;
+
+        }
+    }
 
     private void playerHit(GameObject other)
     {
@@ -297,23 +287,53 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(force.ToString());
 
         force.Normalize();
-        Debug.Log(force.ToString());
+        //Debug.Log(force.ToString());
 
         //figure out what I'm doing wrong here
         //rigidBody.AddForce(force * knockBackForce, ForceMode2D.Impulse);
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, force, (force * knockBackForce).magnitude);
+        
+
         StartCoroutine(Knockback((Vector2)gameObject.transform.position + (force * knockBackForce), other.GetComponent<Ghost>()));
     }
 
     private IEnumerator Knockback(Vector2 destination, Ghost ghost)
     {
+
+        //RaycastHit2D raycast = Physics2D.Raycast(transform.position, destination.normalized, 2 * knockBackSpeed * Time.deltaTime, 6);
+        //Debug.DrawRay(raycast.centroid, raycast.point , Color.red, .1f);
+
+        boxCast =  Physics2D.BoxCast(
+            transform.position, hitboxCollider.bounds.size, 0f, 
+            destination - (Vector2)gameObject.transform.position,  
+            2 *knockBackSpeed*Time.deltaTime, wallLayerMask);
+
+        
+
+        touchingWall = (boxCast.collider != null);
+
+
+
+        //Debug.DrawLine(raycast.point, raycast.)
+        //Debug.Log(raycast.distance);
         spriteRenderer.color = Color.red; //if we wanted to flash then we'd need a separate coroutine yielding wait.1 second or however long
-        while (((Vector2) gameObject.transform.position - destination).magnitude > 0.1)
+        //while ((((Vector2) gameObject.transform.position - destination).magnitude > 0.1) && (!touchingWall))
+        while ((((Vector2) gameObject.transform.position - destination).magnitude > 0.1) && (!touchingWall))
         {
-            rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, 5 * Time.deltaTime));
+            boxCast = Physics2D.BoxCast(transform.position, hitboxCollider.bounds.size, 0f,
+                destination - (Vector2)gameObject.transform.position, 2 * knockBackSpeed * Time.deltaTime, wallLayerMask);
+            touchingWall = (boxCast.collider != null);
+
+
+            rigidBody.MovePosition(Vector2.MoveTowards(gameObject.transform.position, destination, knockBackSpeed * Time.deltaTime));
             yield return new WaitForFixedUpdate();
         }
+        touchingWall = (boxCast.collider != null);
         spriteRenderer.color = Color.white;
-        ghost.moving = true;
+        if (touchingWall)
+        {
+            ghost.moving = false;
+        }
         yield return null;
     }
 
