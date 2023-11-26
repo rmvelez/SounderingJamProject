@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 enum PlayerDirection { Left, Right, Up , Down, UpLeft, UpRight, DownLeft, DownRight}
 
