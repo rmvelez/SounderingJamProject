@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 6
+  spritePivot: {x: 0, y: 0}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,10 +126,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 35
-        height: 75
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +147,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 37
         y: 0
-        width: 35
-        height: 74
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +168,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_2
       rect:
         serializedVersion: 2
-        x: 75
+        x: 74
         y: 0
-        width: 35
-        height: 73
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +189,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_3
       rect:
         serializedVersion: 2
-        x: 112
+        x: 111
         y: 0
-        width: 35
-        height: 72
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +210,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_4
       rect:
         serializedVersion: 2
-        x: 149
+        x: 148
         y: 0
-        width: 35
-        height: 73
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +231,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_5
       rect:
         serializedVersion: 2
-        x: 186
+        x: 185
         y: 0
-        width: 35
-        height: 74
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +252,10 @@ TextureImporter:
       name: 2 Day Jam Player Idle II_6
       rect:
         serializedVersion: 2
-        x: 223
+        x: 222
         y: 0
-        width: 35
-        height: 75
+        width: 37
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
