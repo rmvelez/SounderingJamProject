@@ -27,6 +27,6 @@ public class HUDCOntroller : MonoBehaviour
         float progressPercent = (stressValue / stressMax) * 9.25f;
 
         barSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ barStartPosition.y + (progressPercent / 2), 0);
-        barSprite.transform.localScale = new Vector3(2.26f, progressPercent , 9.25f);
+        barSprite.transform.localScale = new Vector3(2.25f, progressPercent , 9.27f);
     }
 }
