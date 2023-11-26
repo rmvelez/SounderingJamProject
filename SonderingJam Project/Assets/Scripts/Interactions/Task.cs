@@ -28,7 +28,11 @@ public class Task : MonoBehaviour, IInteractable
 
     public void Interact(InteractManager playerInteractManager, PlayerController playerController)
     {
-        minigame.StartMinigame(this);
+        if (!Completed)
+        {
+
+            minigame.StartMinigame(this);
+        }
     }
 
     public void CompleteTask()

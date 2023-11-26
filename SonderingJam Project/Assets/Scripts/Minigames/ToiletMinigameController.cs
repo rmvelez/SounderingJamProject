@@ -15,8 +15,10 @@ public class ToiletMinigameController : Minigame
     [SerializeField] private SpriteRenderer toiletSprite;
     [SerializeField] private SpriteRenderer plungerSprite;
 
-    private Vector3 energyBarStartPosition = new Vector3(.08f, -.5025f,0);
-    private Vector3 progressBarStartPosition = new Vector3(0, -.5f,0);
+    private Vector3 energyBarStartPosition;
+    private Vector3 energyBarStartScale;
+    private Vector3 progressBarStartPosition;
+    private Vector3 progressBarStartScale;
     private float plungerTopHeight = .3f; 
 
     [Header("progress and energy bar variables")]
@@ -51,24 +53,29 @@ public class ToiletMinigameController : Minigame
         base.Start();
 
         progressValue = Random.Range(progressStart.x, progressStart.y);
-        energyBarSprite.transform.localPosition = energyBarStartPosition;
+        energyBarStartPosition = energyBarSprite.transform.localPosition;
+        energyBarStartScale = energyBarSprite.transform.localScale;
+
+        progressBarStartPosition = progressBarSprite.transform.localPosition;
+        progressBarStartScale = progressBarSprite.transform.localScale;
+
         toiletSound = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         float energyPercent = (energyValue / energyMax);
-        float energyBarHeight = energyBarSprite.transform.localScale.y * energyPercent;
-        energyBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ energyBarStartPosition.y + (energyPercent / 2), 0);
-        energyBarSprite.transform.localScale = new Vector3(.1f, energyPercent, 1.15f);
+        float energyBarHeight = energyBarStartScale.y * energyPercent;
+        energyBarSprite.transform.localPosition = new Vector3(0, energyBarHeight - (energyBarHeight / 2) - energyBarStartScale.y/2 , 0);
+        energyBarSprite.transform.localScale = new Vector3(energyBarStartScale.x, energyBarHeight , energyBarStartScale.z);
         
         plungerSprite.transform.localPosition = new Vector3(0, energyPercent * plungerTopHeight, 0);
         
 
-        float progressPercent = (progressValue / progressMax);
-        float progressBarHeight = progressBarSprite.transform.localScale.y * progressPercent;
-        progressBarSprite.transform.localPosition = new Vector3(0, /*energyBarStartPosition.x +*/ progressBarStartPosition.y + (progressPercent / 2), 0);
-        progressBarSprite.transform.localScale = new Vector3(.1f, progressPercent, 1.15f);
+        float progressPercent = (progressValue / progressMax) * progressBarStartScale.y;
+        float progressBarHeight = progressBarStartScale.y * progressPercent;
+        progressBarSprite.transform.localPosition = new Vector3(0, progressBarHeight - (progressBarHeight/2) - progressBarStartScale.y/2, 0);
+        progressBarSprite.transform.localScale = new Vector3(progressBarStartScale.x, progressBarHeight, progressBarStartScale.z);
 
 
         //.localScale.y -= energyBarHeight;
