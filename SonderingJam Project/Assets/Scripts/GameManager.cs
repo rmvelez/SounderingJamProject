@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +19,12 @@ public class GameManager : MonoBehaviour
 
     private List<Task> Tasks = new List<Task>();
     //[SerializeField] private ObjectPool<Task> taskPool;
-       
+
+    public bool paused;
+
+    public UnityEvent onGamePause;
+    public UnityEvent onGameResume;
+    
 
     [SerializeField] private ScoreKeeper scoreKeeper;
     private float Timer = 0;
@@ -71,6 +77,20 @@ public class GameManager : MonoBehaviour
         stressMeter = startingStressAmount;
     }
 
+    public void PauseGame()
+    {
+
+        paused = true;
+        Time.timeScale = 0f;
+        onGamePause.Invoke();
+    }
+
+    public void ResumeGame()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+        onGameResume.Invoke();
+    }
 
     public void SpawnGhost()
     {

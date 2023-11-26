@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 enum PlayerDirection { Left, Right, Up , Down, UpLeft, UpRight, DownLeft, DownRight}
 
@@ -86,8 +87,15 @@ public class PlayerController : MonoBehaviour
         gameManager = GameManager.Instance;
         InteractBox = interactManager.gameObject;
 
+        gameManager.onGamePause.AddListener(SwitchActionMapUI);
+        gameManager.onGameResume.AddListener(SwitchActionMapPlayer);
     }
-    
+
+    public void OnDestroy()
+    {
+        gameManager.onGamePause.RemoveListener(SwitchActionMapUI);
+        gameManager.onGameResume.RemoveListener(SwitchActionMapPlayer);
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -97,6 +105,20 @@ public class PlayerController : MonoBehaviour
         if(timeSinceHit <= invincibilityDuration)
         {
             timeSinceHit += Time.deltaTime;
+        }
+    }
+
+    public void PauseActionPerformed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if(gameManager.paused) //if we're already paused
+            {
+                gameManager.ResumeGame(); //resume
+            } else {
+                gameManager.PauseGame();
+            }
+
         }
     }
 
@@ -208,11 +230,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-        
+            
         
     public void SwitchActionMapPlayer() { SwitchActionMap("Player"); }
     public void SwitchActionMapMinigame() { SwitchActionMap("Minigame"); }
-    public void SwitchActionMapUI() { SwitchActionMap("UI"); }
+    public void SwitchActionMapUI() { SwitchActionMap("PauseMenu"); }
     public void SwitchActionMap(string mapName)
     {
         Debug.Log("switching action map");
@@ -221,18 +243,19 @@ public class PlayerController : MonoBehaviour
 
         switch (mapName)
         {
-            case "UI":
+            case "PauseMenu":
                 UnityEngine.Cursor.visible = true;
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 break;
             case "Minigame":
                 Debug.Log("set action map to minigame");
-                //UnityEngine.Cursor.visible = false;
-                //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
                 break;
             default:
-                //UnityEngine.Cursor.visible = false;
-                //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            case "Player":
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
     }
