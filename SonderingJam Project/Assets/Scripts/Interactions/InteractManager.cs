@@ -127,9 +127,9 @@ public class InteractManager : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("untrackign object");
+        Debug.Log("untracking object");
         // If the object exiting the trigger is an interactable object
         if (other.CompareTag("Interactable"))
         {
@@ -145,7 +145,7 @@ public class InteractManager : MonoBehaviour
 
         //    UntrackObject(interactableObjects[0]);
         //}
-        Debug.Log("interact object calld (on object?)");
+        Debug.Log("interact object called (on object?)");
 
         //make sure we still have objects
         if (interactableObjects.Count > 0)
@@ -168,9 +168,6 @@ public class InteractManager : MonoBehaviour
 
                 broomAnimator.SetTrigger("Attack");
                 broom.enabled = true;
-                //also call kill on ghost here
-
-
 
                 timeSinceAttackStarted = 0;
             }

@@ -949,14 +949,6 @@ PrefabInstance:
       propertyPath: knockBackSpeed
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4202753276839889874, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
-      value: -0.023747362
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202753276839889874, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
-      value: -0.6749464
-      objectReference: {fileID: 0}
     - target: {fileID: 4980462596114910352, guid: c66c865f3e0036b40a934d11b13fdb5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.45
@@ -1847,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 695325598}
     - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
       propertyPath: ghostSpawnTime
-      value: 15
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
       propertyPath: playerController
@@ -1855,7 +1847,7 @@ PrefabInstance:
       objectReference: {fileID: 825724623}
     - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
       propertyPath: ghostSpawnTimeVariance
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2276,6 +2268,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.46
       objectReference: {fileID: 0}
+    - target: {fileID: 543835484540018313, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: energyIncreaseBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 543835484540018313, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: energyIncreaseExponent
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1920395682430258249, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3
@@ -2340,10 +2340,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4519285289847734440, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4600627945596341484, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.54
@@ -2358,11 +2354,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981038241002103196, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981038241002103196, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981038241002103196, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981038241002103196, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6173770431743022137, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
       propertyPath: m_Name
       value: ToiletTaskSet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135946368925854389, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135946368925854389, guid: b46b73bd4abb5154eaf8e508d5d3736c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2400,7 +2416,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

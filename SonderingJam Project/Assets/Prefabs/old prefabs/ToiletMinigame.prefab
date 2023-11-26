@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 459763593379729304}
   - component: {fileID: 8743645994608747345}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnergyBarBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8478618929025670450}
   - component: {fileID: 5451363728957737522}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4045549352484106843}
   - component: {fileID: 4922457495410023967}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579956382643075442}
   - component: {fileID: 6443320338021577788}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnergyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.006, y: 0, z: 0}
-  m_LocalScale: {x: 0.0799992, y: 1.05, z: 1}
+  m_LocalScale: {x: 0.08, y: 1.06, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 459763593379729304}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 8672368707822803014}
   - component: {fileID: 4711288711759431271}
   - component: {fileID: 6831716722853504230}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ToiletMinigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.9198113, g: 1, b: 0.9893082, a: 0.8862745}
   m_FlipX: 0
@@ -563,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4291996899820326725}
   - component: {fileID: 5552564151658720213}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Toilet Mini Game UI_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9008314541820248945}
   - component: {fileID: 7337917094988578890}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Toilet Mini Game UI_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768378899103290677}
   - component: {fileID: 2585158614902884041}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: plunger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262286697232540288}
   - component: {fileID: 898688149316004004}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressBarBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184763758516055941}
   - component: {fileID: 4503671928110466036}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: toilet front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
