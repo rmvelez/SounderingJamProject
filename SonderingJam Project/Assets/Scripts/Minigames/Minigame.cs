@@ -38,7 +38,7 @@ public class Minigame : MonoBehaviour
         gameManager.playerController.SwitchActionMapMinigame();
         gameManager.playerController.currentMinigame = this;
         Debug.Log("minigame started");
-        parentTask = task; 
+        parentTask = task;
         minigameActive = true;
     }
 

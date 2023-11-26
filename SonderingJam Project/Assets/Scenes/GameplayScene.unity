@@ -380,11 +380,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 493055624761745962, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3
+      value: 4.56
       objectReference: {fileID: 0}
     - target: {fileID: 493055624761745962, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.26
+      value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: 1920395682430258249, guid: 404a1010def28ee4b8663f4205ec9d25, type: 3}
       propertyPath: m_LocalScale.x
@@ -1846,9 +1846,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 695325598}
     - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
+      propertyPath: ghostSpawnTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 825724623}
+    - target: {fileID: 8464146929007418589, guid: b1e0b7970dc7dbf4d8d39160b27c7f18, type: 3}
+      propertyPath: ghostSpawnTimeVariance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

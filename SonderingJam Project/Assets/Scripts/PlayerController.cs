@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
         gameManager.onGamePause.AddListener(SwitchActionMapUI);
         gameManager.onGameResume.AddListener(SwitchActionMapPlayer);
+        SwitchActionMapPlayer();
     }
 
     public void OnDestroy()
@@ -248,12 +249,13 @@ public class PlayerController : MonoBehaviour
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 break;
             case "Minigame":
-                Debug.Log("set action map to minigame");
+                gameManager.bPlayerInMinigame = true;
                 UnityEngine.Cursor.visible = true;
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 break;
             default:
             case "Player":
+                gameManager.bPlayerInMinigame = false;
                 UnityEngine.Cursor.visible = false;
                 UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                 break;

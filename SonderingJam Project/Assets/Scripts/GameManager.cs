@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerController playerController;
 
+    public bool bPlayerInMinigame;
+
     private void Awake()
     {
         //SINGLETON PATTERN - ensures that there only ever exists a single gamemanager
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if(timeSinceLastSpawn >= ghostSpawnTime)
+        if(timeSinceLastSpawn >= ghostSpawnTime && !bPlayerInMinigame)//wait until the cooldown elapses and the player is not in a minigame
         {
             Debug.Log("game man is saying to spawna  ghost");
             SpawnGhost();
